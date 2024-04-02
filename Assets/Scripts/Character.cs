@@ -41,15 +41,17 @@ public class Character : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.A))
         {
-            gameObject.transform.localPosition += new Vector3(-0.01f * _speed, 0.0f, 0.0f);
+            gameObject.GetComponent<Transform>().localPosition += new Vector3(-Time.deltaTime * _speed, 0.0f, 0.0f);
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            gameObject.transform.localPosition += new Vector3(0.01f * _speed, 0.0f, 0.0f);
+            gameObject.GetComponent<Transform>().localPosition += new Vector3(Time.deltaTime * _speed, 0.0f, 0.0f);
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
-        if (Input.GetKey(KeyCode.Space) && _isGrounded)
+        if (Input.GetKey(KeyCode.Space)/* && _isGrounded*/)
         {
-            gameObject.transform.localPosition += new Vector3(0.0f, 0.01f * _jumpForce, 0.0f);
+            gameObject.transform.localPosition += new Vector3(0.0f, _jumpForce * Time.deltaTime, 0.0f);
         }
     }
 
