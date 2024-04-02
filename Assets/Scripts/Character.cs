@@ -14,12 +14,17 @@ public class Character : MonoBehaviour
     \* ----------------------------------------------------- */
     #region Field
 
-    [SerializeField] private float _speed;
+    [SerializeField] 
+    private float _speed;
+
+    [SerializeField]
+    private GameObject _platform;
+
     private Rigidbody2D _body;
-    private float _move;
+    private int _jumpsLeft;
+    private int _maxJumps;
 
     public float _jumpForce;
-    public bool _isGrounded;
 
     #endregion Field
 
@@ -34,11 +39,18 @@ public class Character : MonoBehaviour
     void Awake()
     {
         _body = GetComponent<Rigidbody2D>();
+        _maxJumps = 2;
+        _jumpsLeft = _maxJumps;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (IsGrounded() && _body.velocity.y <= 0)
+        {
+            _jumpsLeft = _maxJumps - 1;
+        }
+
         if (Input.GetKey(KeyCode.A))
         {
             gameObject.GetComponent<Transform>().localPosition += new Vector3(-Time.deltaTime * _speed, 0.0f, 0.0f);
@@ -49,26 +61,25 @@ public class Character : MonoBehaviour
             gameObject.GetComponent<Transform>().localPosition += new Vector3(Time.deltaTime * _speed, 0.0f, 0.0f);
             gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
-        if (Input.GetKey(KeyCode.Space)/* && _isGrounded*/)
+        if (Input.GetKeyDown(KeyCode.Space) && (_jumpsLeft > 0 || IsGrounded()))
         {
-            gameObject.transform.localPosition += new Vector3(0.0f, _jumpForce * Time.deltaTime, 0.0f);
+            _body.velocity = new Vector2(_body.velocity.x, 0);
+            _body.AddForce(new Vector2(_body.velocity.x, _jumpForce * 6.0f));
+            _jumpsLeft--;
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    bool IsGrounded()
     {
-        if (collision.gameObject.name == "Platform")
-        {
-            _isGrounded = true;
-        }
-    }
+        Collider2D collider = GetComponent<Collider2D>();
 
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.gameObject.name == "Platform")
-        {
-            _isGrounded = false;
-        }
+        ContactFilter2D contactFilter = new ContactFilter2D();
+
+        Collider2D[] results = new Collider2D[1];
+
+        int count = collider.OverlapCollider(contactFilter, results);
+
+        return count > 0;
     }
 
     #endregion Methods
