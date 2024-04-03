@@ -32,6 +32,7 @@ public class Portal : MonoBehaviour
             {
                 collision.transform.position = new Vector2(_destination.transform.position.x - 1f, _destination.transform.position.y);
             }
+            GetComponent<AudioSource>().Play();
         }
     }
 }

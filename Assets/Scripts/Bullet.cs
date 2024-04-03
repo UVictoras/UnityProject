@@ -9,7 +9,6 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Transform>().Rotate(0, 0, 35);
         rigidBody = GetComponent<Rigidbody2D>();
         rigidBody.velocity = transform.right * speed;
     }
@@ -17,6 +16,5 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 }
