@@ -26,6 +26,9 @@ public class Character : MonoBehaviour
 
     public float _jumpForce;
 
+    public Transform shootingPoint;
+    public GameObject bullet;
+
     #endregion Field
 
     /* ----------------------------------------------------- *\
@@ -54,18 +57,22 @@ public class Character : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             gameObject.GetComponent<Transform>().localPosition += new Vector3(-Time.deltaTime * _speed, 0.0f, 0.0f);
-            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+            GetComponent<Transform>().localRotation = Quaternion.Euler(0, 180, 0);
         }
         if (Input.GetKey(KeyCode.D))
         {
             gameObject.GetComponent<Transform>().localPosition += new Vector3(Time.deltaTime * _speed, 0.0f, 0.0f);
-            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+            GetComponent<Transform>().localRotation = Quaternion.Euler(0, 0, 0);
         }
         if (Input.GetKeyDown(KeyCode.Space) && (_jumpsLeft > 0 || IsGrounded()))
         {
             _body.velocity = new Vector2(_body.velocity.x, 0);
             _body.AddForce(new Vector2(_body.velocity.x, _jumpForce * 6.0f));
             _jumpsLeft--;
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Instantiate(bullet, shootingPoint.position, transform.rotation);
         }
     }
 
