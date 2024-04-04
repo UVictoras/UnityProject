@@ -17,17 +17,18 @@ public class Character : MonoBehaviour
     [SerializeField] 
     private float _speed;
 
-    [SerializeField]
-    private GameObject _platform;
-
     private Rigidbody2D _body;
-    private int _jumpsLeft;
     private int _maxJumps;
 
     public float _jumpForce;
 
-    public Transform shootingPoint;
-    public GameObject bullet;
+    public Transform _shootingPoint;
+    public GameObject _bullet;
+    public GameObject _feet;
+
+    [HideInInspector]
+    public bool _isGrounded;
+    public int _jumpsLeft;
 
     #endregion Field
 
@@ -49,9 +50,9 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (IsGrounded() && _body.velocity.y <= 0)
+        if (_isGrounded == true && _body.velocity.y <= 0)
         {
-            _jumpsLeft = _maxJumps - 1;
+            _jumpsLeft = _maxJumps;
         }
 
         if (Input.GetKey(KeyCode.A))
@@ -64,29 +65,15 @@ public class Character : MonoBehaviour
             gameObject.GetComponent<Transform>().localPosition += new Vector3(Time.deltaTime * _speed, 0.0f, 0.0f);
             GetComponent<Transform>().localRotation = Quaternion.Euler(0, 0, 0);
         }
-        if (Input.GetKeyDown(KeyCode.Space) && (_jumpsLeft > 0 || IsGrounded()))
+        if (Input.GetKeyDown(KeyCode.Space) && (_jumpsLeft > 0 || _isGrounded == true))
         {
-            _body.velocity = new Vector2(_body.velocity.x, 0);
-            _body.AddForce(new Vector2(_body.velocity.x, _jumpForce * 6.0f));
+            _body.AddForce(new Vector2(0, _jumpForce * 6.0f));
             _jumpsLeft--;
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Instantiate(bullet, shootingPoint.position, transform.rotation);
+            Instantiate(_bullet, _shootingPoint.position, transform.rotation);
         }
-    }
-
-    bool IsGrounded()
-    {
-        Collider2D collider = GetComponent<Collider2D>();
-
-        ContactFilter2D contactFilter = new ContactFilter2D();
-
-        Collider2D[] results = new Collider2D[1];
-
-        int count = collider.OverlapCollider(contactFilter, results);
-
-        return count > 0;
     }
 
     #endregion Methods
