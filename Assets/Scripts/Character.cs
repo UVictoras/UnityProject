@@ -28,6 +28,8 @@ public class Character : MonoBehaviour
 
     public Transform shootingPoint;
     public GameObject bullet;
+    public GameObject baseAttack;
+    public Animator _animator;
 
     #endregion Field
 
@@ -73,6 +75,10 @@ public class Character : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             Instantiate(bullet, shootingPoint.position, transform.rotation);
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            _animator.SetBool(0,true);
         }
     }
 
