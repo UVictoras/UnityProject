@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Windows/MainMenu.unity
+    guid: d480d3036a7f7b747bae0560fec20294
+  - enabled: 1
+    path: Assets/Windows/MapMenu.unity
+    guid: 3f5cac33e7fdc13448d5aeebc312e4af
+  - enabled: 1
+    path: Assets/Windows/CharacterMenu.unity
+    guid: 081764cf2ef128a438487fe8fa3b852e
+  - enabled: 1
     path: Assets/Windows/MainScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    guid: 21c3fcff864515447a6bbd0c678db160
   m_configObjects: {}
