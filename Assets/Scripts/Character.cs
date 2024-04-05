@@ -67,6 +67,10 @@ public class Character : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space) && (_jumpsLeft > 0 || _isGrounded == true))
         {
+            if (_jumpsLeft == 1)
+            {
+                _body.velocity = new Vector2(_body.velocity.x, 0.0f);
+            }
             _body.AddForce(new Vector2(0, _jumpForce * 6.0f));
             _jumpsLeft--;
         }
