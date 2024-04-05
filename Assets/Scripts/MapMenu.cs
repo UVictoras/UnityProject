@@ -48,10 +48,10 @@ public class MapMenu : MonoBehaviour
             switch (_mapNames[_mapIndex].name)
             {
                 case "Athens":
-                    UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("CharacterMenu");
                     break;
                 case "Yggdrasil":
-                    Application.Quit();
+                    UnityEngine.SceneManagement.SceneManager.LoadScene("CharacterMenu");
                     break;
             }
         }
