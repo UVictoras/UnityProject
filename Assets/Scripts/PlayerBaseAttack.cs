@@ -22,7 +22,6 @@ public class PlayerBaseAttack : MonoBehaviour
     {
         
         _isHitting = true;
-        Debug.Log("apagnan1");
 
     }
 
