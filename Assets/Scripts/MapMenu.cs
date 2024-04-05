@@ -48,9 +48,11 @@ public class MapMenu : MonoBehaviour
             switch (_mapNames[_mapIndex].name)
             {
                 case "Athens":
+                    GameManager._instance._mapChoice = "Athens";
                     UnityEngine.SceneManagement.SceneManager.LoadScene("CharacterMenu");
                     break;
                 case "Yggdrasil":
+                    GameManager._instance._mapChoice = "Yggdrasil";
                     UnityEngine.SceneManagement.SceneManager.LoadScene("CharacterMenu");
                     break;
             }

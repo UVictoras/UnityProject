@@ -6,6 +6,8 @@ public class Menu : MonoBehaviour
 {
     [SerializeField]
     private GameObject[] _frames;
+    [SerializeField]
+    private GameObject _gameManager;
 
     private int _idSelectedFrame;
     // Start is called before the first frame update
@@ -47,6 +49,7 @@ public class Menu : MonoBehaviour
             switch (_frames[_idSelectedFrame].name)
             {
                 case "PlayFrame":
+                    DontDestroyOnLoad(_gameManager);
                     UnityEngine.SceneManagement.SceneManager.LoadScene("MapMenu");
                     break;
                 case "QuitFrame":

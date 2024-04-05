@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class CharacterMenu : MonoBehaviour
@@ -9,6 +6,10 @@ public class CharacterMenu : MonoBehaviour
     private GameObject[] _players;
     [SerializeField]
     private GameObject[] _characters;
+    [SerializeField]
+    private Transform[] _playerOnePos;
+    [SerializeField]
+    private Transform[] _playerTwoPos;
 
     public int _playerOneChoice;
     public int _playerTwoChoice;
@@ -52,6 +53,8 @@ public class CharacterMenu : MonoBehaviour
                     break;
             }
         }
+
+        
         if (Input.GetKeyDown(KeyCode.A))
         {
             switch (_playerOneChoice)
@@ -64,6 +67,7 @@ public class CharacterMenu : MonoBehaviour
                     break;
             }
         }
+        
         if (Input.GetKeyDown(KeyCode.D))
         {
             switch (_playerOneChoice)
@@ -76,6 +80,7 @@ public class CharacterMenu : MonoBehaviour
                     break;
             }
         }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             _playerOneLocked = !_playerOneLocked;
@@ -90,47 +95,17 @@ public class CharacterMenu : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    if (_playerOneChoice == 0)
-                    {
-                        _players[i].GetComponent<Transform>().position = new Vector2(-4.10f, _players[i].transform.position.y);
-                        _players[i].GetComponentInChildren<Transform>().position = new Vector2(-4.12f, _players[i].GetComponentInChildren<Transform>().position.y);
-                    }
-                    else
-                    {
-                        _players[i].GetComponent<Transform>().position = new Vector2(3.10f, _players[i].transform.position.y);
-                        _players[i].GetComponentInChildren<Transform>().position = new Vector2(3.12f, _players[i].GetComponentInChildren<Transform>().position.y);
-                    }
 
-                    if (_playerOneLocked == true)
-                    {
-                        _players[i].transform.GetChild(0).gameObject.SetActive(true);
-                    }
-                    else
-                    {
-                        _players[i].transform.GetChild(0).gameObject.SetActive(false);
-                    }
+                    _players[i].GetComponent<Transform>().position = _playerOnePos[_playerOneChoice].position;
+                    _players[i].transform.GetChild(0).gameObject.SetActive(_playerOneLocked);
                     break;
+
                 case 1:
-                    if (_playerTwoChoice == 0)
-                    {
-                        _players[i].GetComponent<Transform>().position = new Vector2(-2.50f, _players[i].transform.position.y);
-                        _players[i].GetComponentInChildren<Transform>().position = new Vector2(-2.52f, _players[i].GetComponentInChildren<Transform>().position.y);
-                    }
-                    else
-                    {
-                        _players[i].GetComponent<Transform>().position = new Vector2(4.70f, _players[i].transform.position.y);
-                        _players[i].GetComponentInChildren<Transform>().position = new Vector2(4.72f, _players[i].GetComponentInChildren<Transform>().position.y);
-                    }
 
-                    if (_playerTwoLocked == true)
-                    {
-                        _players[i].transform.GetChild(0).gameObject.SetActive(true);
-                    }
-                    else
-                    {
-                        _players[i].transform.GetChild(0).gameObject.SetActive(false);
-                    }
+                    _players[i].GetComponent<Transform>().position = _playerTwoPos[_playerTwoChoice].position;
+                    _players[i].transform.GetChild(0).gameObject.SetActive(_playerTwoLocked);
                     break;
+
             }
         }
 
