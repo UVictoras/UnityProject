@@ -23,8 +23,8 @@ public class Character : MonoBehaviour
     public float _jumpForce;
 
 
-    public Transform shootingPoint;
-    public GameObject bullet;
+    public Transform _shootingPoint;
+    public GameObject _bullet;
     public GameObject baseAttack;
     public Animator _animator;
     [HideInInspector]
