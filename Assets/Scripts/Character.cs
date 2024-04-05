@@ -78,7 +78,18 @@ public class Character : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
-            _animator.SetBool(0,true);
+            _animator.SetBool("isPressed",true);
+            baseAttack.SetActive(true);
+            if (baseAttack.GetComponent<Collider2D>().isTrigger)
+            {
+                PlayerBaseAttack._isHitting = true;
+            }
+        }
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            _animator.SetBool("isPressed", false);
+            baseAttack.SetActive(false);
+            PlayerBaseAttack._isHitting = false;
         }
     }
 
