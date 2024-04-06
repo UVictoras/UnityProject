@@ -1,8 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Security.Cryptography;
-using System.Threading;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -14,7 +9,7 @@ public class Character : MonoBehaviour
     \* ----------------------------------------------------- */
     #region Field
 
-    [SerializeField] 
+    [SerializeField]
     private float _speed;
 
     private Rigidbody2D _body;
@@ -22,7 +17,8 @@ public class Character : MonoBehaviour
 
     public float _jumpForce;
 
-
+    [HideInInspector]
+    public int _playerId;
     public Transform _shootingPoint;
     public GameObject _bullet;
     public GameObject baseAttack;
@@ -58,32 +54,62 @@ public class Character : MonoBehaviour
             _jumpsLeft = _maxJumps;
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (_playerId == 1)
         {
-            gameObject.GetComponent<Transform>().localPosition += new Vector3(-Time.deltaTime * _speed, 0.0f, 0.0f);
-            GetComponent<Transform>().localRotation = Quaternion.Euler(0, 180, 0);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            gameObject.GetComponent<Transform>().localPosition += new Vector3(Time.deltaTime * _speed, 0.0f, 0.0f);
-            GetComponent<Transform>().localRotation = Quaternion.Euler(0, 0, 0);
-        }
-        if (Input.GetKeyDown(KeyCode.Space) && (_jumpsLeft > 0 || _isGrounded == true))
-        {
-            if (_jumpsLeft == 1)
+            if (Input.GetKey(KeyCode.A))
             {
-                _body.velocity = new Vector2(_body.velocity.x, 0.0f);
+                gameObject.GetComponent<Transform>().localPosition += new Vector3(-Time.deltaTime * _speed, 0.0f, 0.0f);
+                GetComponent<Transform>().localRotation = Quaternion.Euler(0, 180, 0);
             }
-            _body.AddForce(new Vector2(0, _jumpForce * 6.0f));
-            _jumpsLeft--;
+            if (Input.GetKey(KeyCode.D))
+            {
+                gameObject.GetComponent<Transform>().localPosition += new Vector3(Time.deltaTime * _speed, 0.0f, 0.0f);
+                GetComponent<Transform>().localRotation = Quaternion.Euler(0, 0, 0);
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space) && (_jumpsLeft > 0 || _isGrounded == true))
+            {
+                if (_jumpsLeft == 1)
+                {
+                    _body.velocity = new Vector2(_body.velocity.x, 0.0f);
+                }
+                _body.AddForce(new Vector2(0, _jumpForce * 6.0f));
+                _jumpsLeft--;
+            }
         }
+
+        if (_playerId == 2)
+        {
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                gameObject.GetComponent<Transform>().localPosition += new Vector3(-Time.deltaTime * _speed, 0.0f, 0.0f);
+                GetComponent<Transform>().localRotation = Quaternion.Euler(0, 180, 0);
+            }
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                gameObject.GetComponent<Transform>().localPosition += new Vector3(Time.deltaTime * _speed, 0.0f, 0.0f);
+                GetComponent<Transform>().localRotation = Quaternion.Euler(0, 0, 0);
+            }
+
+            if (Input.GetKeyDown(KeyCode.UpArrow) && (_jumpsLeft > 0 || _isGrounded == true))
+            {
+                if (_jumpsLeft == 1)
+                {
+                    _body.velocity = new Vector2(_body.velocity.x, 0.0f);
+                }
+                _body.AddForce(new Vector2(0, _jumpForce * 6.0f));
+                _jumpsLeft--;
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.Q))
         {
             Instantiate(_bullet, _shootingPoint.position, transform.rotation);
         }
+
         if (Input.GetKeyDown(KeyCode.E))
         {
-            _animator.SetBool("isPressed",true);
+            _animator.SetBool("isPressed", true);
             baseAttack.SetActive(true);
             if (baseAttack.GetComponent<Collider2D>().isTrigger)
             {

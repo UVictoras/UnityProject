@@ -4904,7 +4904,7 @@ GameObject:
   - component: {fileID: 7949452014068294486}
   - component: {fileID: 2292129657885353622}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Thunder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

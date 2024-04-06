@@ -20,6 +20,9 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (gameObject.tag == "Axe")
+            gameObject.transform.Rotate(0.0f, 0.0f, 360.0f * -Time.deltaTime);
+
         if (_lifeTime == 0)
         {
             Destroy(gameObject);

@@ -24,6 +24,9 @@ public class CharacterMenu : MonoBehaviour
 
         _playerOneLocked = false;
         _playerTwoLocked = false;
+
+        GameManager._instance._playerOneCharacter = "Zeus";
+        GameManager._instance._playerTwoCharacter = "Zeus";
     }
 
     // Update is called once per frame
@@ -35,9 +38,11 @@ public class CharacterMenu : MonoBehaviour
             {
                 case 0:
                     _playerTwoChoice = 1;
+                    GameManager._instance._playerTwoCharacter = "Odin";
                     break;
                 case 1:
                     _playerTwoChoice = 0;
+                    GameManager._instance._playerTwoCharacter = "Zeus";
                     break;
             }
         }
@@ -47,9 +52,11 @@ public class CharacterMenu : MonoBehaviour
             {
                 case 0:
                     _playerTwoChoice = 1;
+                    GameManager._instance._playerTwoCharacter= "Odin";
                     break;
                 case 1:
                     _playerTwoChoice = 0;
+                    GameManager._instance._playerTwoCharacter = "Zeus";
                     break;
             }
         }
@@ -61,9 +68,11 @@ public class CharacterMenu : MonoBehaviour
             {
                 case 0:
                     _playerOneChoice = 1;
+                    GameManager._instance._playerOneCharacter = "Odin";
                     break;
                 case 1:
                     _playerOneChoice = 0;
+                    GameManager._instance._playerOneCharacter = "Zeus";
                     break;
             }
         }
@@ -74,9 +83,11 @@ public class CharacterMenu : MonoBehaviour
             {
                 case 0:
                     _playerOneChoice = 1;
+                    GameManager._instance._playerOneCharacter = "Odin";
                     break;
                 case 1:
                     _playerOneChoice = 0;
+                    GameManager._instance._playerOneCharacter = "Zeus";
                     break;
             }
         }
