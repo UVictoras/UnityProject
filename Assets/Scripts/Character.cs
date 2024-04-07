@@ -1,4 +1,6 @@
 using UnityEngine;
+using Unity;
+using TMPro;
 
 public class Character : MonoBehaviour
 {
@@ -27,7 +29,10 @@ public class Character : MonoBehaviour
     public bool _isGrounded;
     public int _jumpsLeft;
 
-
+    private int _percentage;
+    private int _lifesRemaining;
+    [HideInInspector]
+    public TextMeshProUGUI _percentageText;
 
     #endregion Field
 
@@ -44,6 +49,8 @@ public class Character : MonoBehaviour
         _body = GetComponent<Rigidbody2D>();
         _maxJumps = 2;
         _jumpsLeft = _maxJumps;
+        _percentage = 24;
+        _lifesRemaining = 3;
     }
 
     // Update is called once per frame
@@ -76,6 +83,11 @@ public class Character : MonoBehaviour
                 _body.AddForce(new Vector2(0, _jumpForce * 6.0f));
                 _jumpsLeft--;
             }
+          
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                Instantiate(_bullet, _shootingPoint.position, transform.rotation);
+            }
         }
 
         if (_playerId == 2)
@@ -100,12 +112,13 @@ public class Character : MonoBehaviour
                 _body.AddForce(new Vector2(0, _jumpForce * 6.0f));
                 _jumpsLeft--;
             }
+
+            if (Input.GetKeyDown(KeyCode.Keypad2))
+            {
+                Instantiate(_bullet, _shootingPoint.position, transform.rotation);
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Instantiate(_bullet, _shootingPoint.position, transform.rotation);
-        }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -122,6 +135,8 @@ public class Character : MonoBehaviour
             baseAttack.SetActive(false);
             PlayerBaseAttack._isHitting = false;
         }
+
+        _percentageText.GetComponent<TextMeshProUGUI>().text = _percentage.ToString() + "%";
     }
 
     #endregion Methods

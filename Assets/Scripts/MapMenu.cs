@@ -14,6 +14,8 @@ public class MapMenu : MonoBehaviour
     void Start()
     {
         _mapIndex = 0;
+
+        GameManager._instance._mapChoice = "Athens";
     }
 
     // Update is called once per frame
