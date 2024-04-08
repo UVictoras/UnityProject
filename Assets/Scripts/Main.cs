@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Diagnostics;
 using TMPro;
 using UnityEngine;
 
@@ -17,10 +15,20 @@ public class Main : MonoBehaviour
     private Sprite[] _charactersFrames;
     [SerializeField]
     private TextMeshProUGUI[] _charactersPercentage;
+    [SerializeField]
+    public GameObject[] _hearts;
 
-    // Start is called before the first frame update
-    void Start()
+    public static Main instance;
+
+    private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+            Destroy(gameObject);
+
         if (GameManager._instance._mapChoice == "Athens")
         {
             gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = _backgrounds[0];
@@ -66,6 +74,12 @@ public class Main : MonoBehaviour
             _playersFrames[1].transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = _charactersFrames[1];
         }
         _playersFrames[1].transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = true;
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
     }
 
     // Update is called once per frame

@@ -1,6 +1,7 @@
 using UnityEngine;
 using Unity;
 using TMPro;
+using System.Collections.Generic;
 
 public class Character : MonoBehaviour
 {
@@ -34,6 +35,9 @@ public class Character : MonoBehaviour
     [HideInInspector]
     public TextMeshProUGUI _percentageText;
 
+    [HideInInspector]
+    public List<GameObject> _hearts;
+
     #endregion Field
 
     /* ----------------------------------------------------- *\
@@ -44,13 +48,19 @@ public class Character : MonoBehaviour
     #region Methods
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         _body = GetComponent<Rigidbody2D>();
         _maxJumps = 2;
         _jumpsLeft = _maxJumps;
         _percentage = 24;
         _lifesRemaining = 3;
+
+        for (int i = 0; i < 3; i++)
+        {
+            int offset = _playerId == 1 ? 0 : 3;
+            _hearts.Add(Main.instance._hearts[i + offset]);
+        }
     }
 
     // Update is called once per frame
@@ -137,6 +147,23 @@ public class Character : MonoBehaviour
         }
 
         _percentageText.GetComponent<TextMeshProUGUI>().text = _percentage.ToString() + "%";
+
+       
+    }
+
+
+    private void OnBecameInvisible()
+    {
+        _hearts[_lifesRemaining - 1].gameObject.SetActive(false);
+        _lifesRemaining--;
+        _percentage = 0;
+
+        transform.position = new Vector3(0, 0, 0);
+
+        if (_lifesRemaining == 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     #endregion Methods
