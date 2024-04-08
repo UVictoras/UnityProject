@@ -3,87 +3,52 @@ using UnityEngine;
 
 public class Main : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField] 
     private Transform[] _playersPos;
-    [SerializeField]
+    [SerializeField] 
     private GameObject[] _playersFrames;
-    [SerializeField]
+    [SerializeField] 
     private GameObject[] _characters;
-    [SerializeField]
+    [SerializeField] 
     private Sprite[] _backgrounds;
-    [SerializeField]
+    [SerializeField] 
     private Sprite[] _charactersFrames;
-    [SerializeField]
+    [SerializeField] 
     private TextMeshProUGUI[] _charactersPercentage;
-    [SerializeField]
+    
     public GameObject[] _hearts;
-
     public static Main instance;
 
     private void Awake()
     {
         if (instance == null)
-        {
             instance = this;
-        }
         else
             Destroy(gameObject);
 
-        if (GameManager._instance._mapChoice == "Athens")
-        {
-            gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = _backgrounds[0];
-        }
-        else
-        {
-            gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = _backgrounds[1];
-        }
-
-        _characters[0].GetComponent<Character>()._playerId = 1;
-        _characters[1].GetComponent<Character>()._playerId = 1;
-        _characters[0].GetComponent<Character>()._percentageText = _charactersPercentage[0];
-        _characters[1].GetComponent<Character>()._percentageText = _charactersPercentage[0];
-
-        if (GameManager._instance._playerOneCharacter == "Zeus")
-        {
-            Instantiate(_characters[0], _playersPos[0].position, transform.rotation);
-            _playersFrames[0].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = _characters[0].GetComponent<SpriteRenderer>().sprite;
-            _playersFrames[0].transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = _charactersFrames[0];
-        }
-        else
-        {
-            Instantiate(_characters[1], _playersPos[0].position, transform.rotation);
-            _playersFrames[0].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = _characters[1].GetComponent<SpriteRenderer>().sprite;
-            _playersFrames[0].transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = _charactersFrames[1];
-        }
-
-        _characters[1].GetComponent<Character>()._playerId = 2;
-        _characters[0].GetComponent<Character>()._playerId = 2;
-        _characters[0].GetComponent<Character>()._percentageText = _charactersPercentage[1];
-        _characters[1].GetComponent<Character>()._percentageText = _charactersPercentage[1];
-
-        if (GameManager._instance._playerTwoCharacter == "Zeus")
-        {
-            Instantiate(_characters[0], _playersPos[1].position, transform.rotation);
-            _playersFrames[1].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = _characters[0].GetComponent<SpriteRenderer>().sprite;
-            _playersFrames[1].transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = _charactersFrames[0];
-        }
-        else
-        {
-            Instantiate(_characters[1], _playersPos[1].position, transform.rotation);
-            _playersFrames[1].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = _characters[1].GetComponent<SpriteRenderer>().sprite;
-            _playersFrames[1].transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = _charactersFrames[1];
-        }
-        _playersFrames[1].transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = true;
+        SetBackgroundSprite();
+        SetCharacters(1, _charactersPercentage[0], _playersPos[0], _playersFrames[0], GameManager._instance._playerOneCharacter);
+        SetCharacters(2, _charactersPercentage[1], _playersPos[1], _playersFrames[1], GameManager._instance._playerTwoCharacter);
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void SetBackgroundSprite()
     {
-        
+        int backgroundIndex = (GameManager._instance._mapChoice == "Athens") ? 0 : 1;
+        gameObject.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = _backgrounds[backgroundIndex];
     }
 
-    // Update is called once per frame
-    void Update()
+    private void SetCharacters(int playerId, TextMeshProUGUI percentageText, Transform playerPos, GameObject playerFrame, string characterName)
     {
+        int characterIndex = (characterName == "Zeus") ? 0 : 1;
+        GameObject characterInstance = Instantiate(_characters[characterIndex], playerPos.position, transform.rotation);
+
+        characterInstance.GetComponent<Character>()._playerId = playerId;
+        characterInstance.GetComponent<Character>()._percentageText = percentageText;
+
+        playerFrame.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = characterInstance.GetComponent<SpriteRenderer>().sprite;
+        playerFrame.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = _charactersFrames[characterIndex];
+
+        if (playerId == 2)
+            playerFrame.transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = true;
     }
 }

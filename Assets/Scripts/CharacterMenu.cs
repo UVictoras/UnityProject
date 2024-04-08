@@ -2,126 +2,69 @@ using UnityEngine;
 
 public class CharacterMenu : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject[] _players;
-    [SerializeField]
-    private GameObject[] _characters;
-    [SerializeField]
-    private Transform[] _playerOnePos;
-    [SerializeField]
-    private Transform[] _playerTwoPos;
+    [SerializeField] private GameObject[] _players;
+    [SerializeField] private Transform[] _playerOnePos;
+    [SerializeField] private Transform[] _playerTwoPos;
 
-    public int _playerOneChoice;
-    public int _playerTwoChoice;
+    public int _playerOneChoice = 0;
+    public int _playerTwoChoice = 0;
 
-    public bool _playerOneLocked;
-    public bool _playerTwoLocked;
-    // Start is called before the first frame update
-    void Start()
+    public bool _playerOneLocked = false;
+    public bool _playerTwoLocked = false;
+
+    private void Start()
     {
-        _playerOneChoice = 0;
-        _playerTwoChoice = 0;
-
-        _playerOneLocked = false;
-        _playerTwoLocked = false;
-
         GameManager._instance._playerOneCharacter = "Zeus";
         GameManager._instance._playerTwoCharacter = "Zeus";
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        HandleInput();
+        MovePlayers();
+        CheckLockAndLoadMainScene();
+    }
+
+    private void HandleInput()
+    {
+        if (!_playerOneLocked)
         {
-            switch (_playerTwoChoice)
-            {
-                case 0:
-                    _playerTwoChoice = 1;
-                    GameManager._instance._playerTwoCharacter = "Odin";
-                    break;
-                case 1:
-                    _playerTwoChoice = 0;
-                    GameManager._instance._playerTwoCharacter = "Zeus";
-                    break;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            switch (_playerTwoChoice)
-            {
-                case 0:
-                    _playerTwoChoice = 1;
-                    GameManager._instance._playerTwoCharacter= "Odin";
-                    break;
-                case 1:
-                    _playerTwoChoice = 0;
-                    GameManager._instance._playerTwoCharacter = "Zeus";
-                    break;
-            }
+            if (Input.GetKeyDown(KeyCode.A))
+                _playerOneChoice = (_playerOneChoice + 1) % _players.Length;
+            else if (Input.GetKeyDown(KeyCode.D))
+                _playerOneChoice = (_playerOneChoice + 1) % _players.Length;
         }
 
-        
-        if (Input.GetKeyDown(KeyCode.A))
+        if (!_playerTwoLocked)
         {
-            switch (_playerOneChoice)
-            {
-                case 0:
-                    _playerOneChoice = 1;
-                    GameManager._instance._playerOneCharacter = "Odin";
-                    break;
-                case 1:
-                    _playerOneChoice = 0;
-                    GameManager._instance._playerOneCharacter = "Zeus";
-                    break;
-            }
-        }
-        
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            switch (_playerOneChoice)
-            {
-                case 0:
-                    _playerOneChoice = 1;
-                    GameManager._instance._playerOneCharacter = "Odin";
-                    break;
-                case 1:
-                    _playerOneChoice = 0;
-                    GameManager._instance._playerOneCharacter = "Zeus";
-                    break;
-            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+                _playerTwoChoice = (_playerTwoChoice + 1) % _players.Length;
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+                _playerTwoChoice = (_playerTwoChoice + 1) % _players.Length;
         }
 
         if (Input.GetKeyDown(KeyCode.E))
-        {
             _playerOneLocked = !_playerOneLocked;
-        }
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            _playerTwoLocked = !_playerTwoLocked;
-        }
 
+        if (Input.GetKeyDown(KeyCode.Backspace))
+            _playerTwoLocked = !_playerTwoLocked;
+    }
+
+    private void MovePlayers()
+    {
         for (int i = 0; i < _players.Length; i++)
         {
-            switch (i)
-            {
-                case 0:
-
-                    _players[i].GetComponent<Transform>().position = _playerOnePos[_playerOneChoice].position;
-                    _players[i].transform.GetChild(0).gameObject.SetActive(_playerOneLocked);
-                    break;
-
-                case 1:
-
-                    _players[i].GetComponent<Transform>().position = _playerTwoPos[_playerTwoChoice].position;
-                    _players[i].transform.GetChild(0).gameObject.SetActive(_playerTwoLocked);
-                    break;
-
-            }
+            _players[i].transform.position = (i == 0) ? _playerOnePos[_playerOneChoice].position : _playerTwoPos[_playerTwoChoice].position;
+            _players[i].transform.GetChild(0).gameObject.SetActive((i == 0) ? _playerOneLocked : _playerTwoLocked);
         }
+    }
 
-        if (_playerOneLocked == true && _playerTwoLocked == true)
+    private void CheckLockAndLoadMainScene()
+    {
+        if (_playerOneLocked && _playerTwoLocked)
         {
+            GameManager._instance._playerOneCharacter = _playerOneChoice == 0 ? "Zeus" : "Odin";
+            GameManager._instance._playerTwoCharacter = _playerTwoChoice== 0 ? "Zeus" : "Odin";
             UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
         }
     }

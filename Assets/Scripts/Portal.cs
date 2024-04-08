@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
+    private AudioSource _audioSource;
+
     public Transform _destination;
     public float _distance;
     public string _direction;
@@ -12,27 +14,16 @@ public class Portal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (Vector2.Distance(transform.position, collision.transform.position) > _distance)
         {
-            if (_direction == "left")
-            {
-                collision.transform.position = new Vector2(_destination.transform.position.x + 1f, _destination.transform.position.y);
-            }
-            else
-            {
-                collision.transform.position = new Vector2(_destination.transform.position.x - 1f, _destination.transform.position.y);
-            }
-            GetComponent<AudioSource>().Play();
+            Vector2 newPosition = new Vector2(_destination.position.x + (_direction == "left" ? 1f : -1f), _destination.position.y);
+            collision.transform.position = newPosition;
+            _audioSource.Play();
         }
     }
 }
