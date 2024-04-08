@@ -65,6 +65,7 @@ public class Main : MonoBehaviour
             _playersFrames[1].transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = _characters[1].GetComponent<SpriteRenderer>().sprite;
             _playersFrames[1].transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = _charactersFrames[1];
         }
+        _playersFrames[1].transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = true;
     }
 
     // Update is called once per frame
