@@ -27,7 +27,7 @@ public class Portal : MonoBehaviour
             }
             else if (_direction == "up")
             {
-                collision.transform.position = new Vector2(_destination.transform.position.x , _destination.transform.position.y + 1f);
+                collision.transform.position = new Vector2(_destination.transform.position.x , _destination.transform.position.y - 1f);
             }
             else
             {
