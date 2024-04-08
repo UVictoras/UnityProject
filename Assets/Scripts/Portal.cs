@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class Portal : MonoBehaviour
@@ -27,6 +24,10 @@ public class Portal : MonoBehaviour
             if (_direction == "left")
             {
                 collision.transform.position = new Vector2(_destination.transform.position.x + 1f, _destination.transform.position.y);
+            }
+            else if (_direction == "up")
+            {
+                collision.transform.position = new Vector2(_destination.transform.position.x , _destination.transform.position.y + 1f);
             }
             else
             {

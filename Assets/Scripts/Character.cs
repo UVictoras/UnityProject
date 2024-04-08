@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -83,6 +84,7 @@ public class Character : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
+            
             _animator.SetBool("isPressed",true);
             baseAttack.SetActive(true);
             if (baseAttack.GetComponent<Collider2D>().isTrigger)
