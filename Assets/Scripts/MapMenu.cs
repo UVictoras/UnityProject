@@ -6,10 +6,27 @@ using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class MapMenu : MonoBehaviour
 {
+    /* ----------------------------------------------------- *\
+    |                                                         |
+    |                          Field                          |
+    |                                                         |
+    \* ----------------------------------------------------- */
+    #region Field
+
     [SerializeField]
     private TextMeshProUGUI[] _mapNames;
 
     private int _mapIndex;
+
+    #endregion Field
+
+    /* ----------------------------------------------------- *\
+    |                                                         |
+    |                         Methods                         |
+    |                                                         |
+    \* ----------------------------------------------------- */
+    #region Methods
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,4 +62,6 @@ public class MapMenu : MonoBehaviour
             _mapNames[i].color = isSelected ? Color.green : Color.white;
         }
     }
+
+    #endregion Methods
 }

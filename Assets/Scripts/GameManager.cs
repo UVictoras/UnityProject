@@ -5,6 +5,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    /* ----------------------------------------------------- *\
+    |                                                         |
+    |                          Field                          |
+    |                                                         |
+    \* ----------------------------------------------------- */
+    #region Field
+
     [HideInInspector]
     public string _playerOneCharacter;
     [HideInInspector]
@@ -14,6 +21,14 @@ public class GameManager : MonoBehaviour
 
     public static GameManager _instance;
 
+    #endregion Field
+
+    /* ----------------------------------------------------- *\
+    |                                                         |
+    |                         Methods                         |
+    |                                                         |
+    \* ----------------------------------------------------- */
+    #region Methods
     private void Awake()
     {
         if (_instance == null)
@@ -23,4 +38,6 @@ public class GameManager : MonoBehaviour
         else
             Destroy(gameObject);
     }
+
+    #endregion Methods
 }

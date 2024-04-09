@@ -11433,6 +11433,7 @@ MonoBehaviour:
   _charactersPercentage:
   - {fileID: 264341977}
   - {fileID: 357235854}
+  _deathParticles: {fileID: 8229924164873751529, guid: c0ff5ffddd464ba4d95dde7df42f042e, type: 3}
   _hearts:
   - {fileID: 594996334}
   - {fileID: 2017601697}
@@ -12609,63 +12610,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1125435170}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &7883414053089243862
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 6239848662327238411, guid: c0ff5ffddd464ba4d95dde7df42f042e, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -2.757962
-      objectReference: {fileID: 0}
-    - target: {fileID: 6239848662327238411, guid: c0ff5ffddd464ba4d95dde7df42f042e, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.6048698
-      objectReference: {fileID: 0}
-    - target: {fileID: 6239848662327238411, guid: c0ff5ffddd464ba4d95dde7df42f042e, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.8550666
-      objectReference: {fileID: 0}
-    - target: {fileID: 6239848662327238411, guid: c0ff5ffddd464ba4d95dde7df42f042e, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6239848662327238411, guid: c0ff5ffddd464ba4d95dde7df42f042e, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 6239848662327238411, guid: c0ff5ffddd464ba4d95dde7df42f042e, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6239848662327238411, guid: c0ff5ffddd464ba4d95dde7df42f042e, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6239848662327238411, guid: c0ff5ffddd464ba4d95dde7df42f042e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: -90
-      objectReference: {fileID: 0}
-    - target: {fileID: 6239848662327238411, guid: c0ff5ffddd464ba4d95dde7df42f042e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6239848662327238411, guid: c0ff5ffddd464ba4d95dde7df42f042e, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8229924164873751529, guid: c0ff5ffddd464ba4d95dde7df42f042e, type: 3}
-      propertyPath: m_Name
-      value: Particle System
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c0ff5ffddd464ba4d95dde7df42f042e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -12673,6 +12617,5 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 1125435170}
   - {fileID: 159426921}
-  - {fileID: 7883414053089243862}
   - {fileID: 285399361}
   - {fileID: 1815819171}

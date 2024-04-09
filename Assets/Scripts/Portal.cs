@@ -5,11 +5,27 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
+    /* ----------------------------------------------------- *\
+    |                                                         |
+    |                          Field                          |
+    |                                                         |
+    \* ----------------------------------------------------- */
+    #region Field
+
     private AudioSource _audioSource;
 
     public Transform _destination;
     public float _distance;
     public string _direction;
+
+    #endregion Field
+
+    /* ----------------------------------------------------- *\
+    |                                                         |
+    |                         Methods                         |
+    |                                                         |
+    \* ----------------------------------------------------- */
+    #region Methods
 
     // Start is called before the first frame update
     void Start()
@@ -26,4 +42,6 @@ public class Portal : MonoBehaviour
             _audioSource.Play();
         }
     }
+
+    #endregion Methods
 }

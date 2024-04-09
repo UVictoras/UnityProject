@@ -17,7 +17,6 @@ public class Character : MonoBehaviour
 
     private int _maxJumps;
     private int _percentage;
-    private int _lifesRemaining;
     private Rigidbody2D _body;
 
     [HideInInspector]
@@ -30,6 +29,7 @@ public class Character : MonoBehaviour
     public TextMeshProUGUI _percentageText;
 
     public int _jumpsLeft;
+    public int _lifesRemaining;
     public float _jumpForce;
     public GameObject _bullet;
     public GameObject baseAttack;
@@ -128,6 +128,8 @@ public class Character : MonoBehaviour
         _hearts[_lifesRemaining - 1].gameObject.SetActive(false);
         _lifesRemaining--;
         _percentage = 0;
+
+        Main.instance.CheckAlive(gameObject);
 
         transform.position = new Vector3(0, 0, 0);
 

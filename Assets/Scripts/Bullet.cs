@@ -4,10 +4,27 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    /* ----------------------------------------------------- *\
+    |                                                         |
+    |                          Field                          |
+    |                                                         |
+    \* ----------------------------------------------------- */
+    #region Field
+
     public float speed;
     private Rigidbody2D rigidBody;
     private int _lifeTime;
     private bool _canCycle;
+
+    #endregion Field
+
+    /* ----------------------------------------------------- *\
+    |                                                         |
+    |                         Methods                         |
+    |                                                         |
+    \* ----------------------------------------------------- */
+    #region Methods
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,4 +60,6 @@ public class Bullet : MonoBehaviour
 
         _canCycle = true;
     }
+
+    #endregion Methods
 }

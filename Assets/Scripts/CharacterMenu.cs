@@ -2,15 +2,34 @@ using UnityEngine;
 
 public class CharacterMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject[] _players;
-    [SerializeField] private Transform[] _playerOnePos;
-    [SerializeField] private Transform[] _playerTwoPos;
+    /* ----------------------------------------------------- *\
+    |                                                         |
+    |                          Field                          |
+    |                                                         |
+    \* ----------------------------------------------------- */
+    #region Field
+
+    [SerializeField] 
+    private GameObject[] _players;
+    [SerializeField] 
+    private Transform[] _playerOnePos;
+    [SerializeField] 
+    private Transform[] _playerTwoPos;
 
     public int _playerOneChoice = 0;
     public int _playerTwoChoice = 0;
 
     public bool _playerOneLocked = false;
     public bool _playerTwoLocked = false;
+
+    #endregion Field
+
+    /* ----------------------------------------------------- *\
+    |                                                         |
+    |                         Methods                         |
+    |                                                         |
+    \* ----------------------------------------------------- */
+    #region Methods
 
     private void Start()
     {
@@ -68,4 +87,6 @@ public class CharacterMenu : MonoBehaviour
             UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
         }
     }
+
+    #endregion Methods
 }

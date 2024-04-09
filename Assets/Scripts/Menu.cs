@@ -4,12 +4,29 @@ using UnityEngine;
 
 public class Menu : MonoBehaviour
 {
+    /* ----------------------------------------------------- *\
+    |                                                         |
+    |                          Field                          |
+    |                                                         |
+    \* ----------------------------------------------------- */
+    #region Field
+
     [SerializeField]
     private GameObject[] _frames;
     [SerializeField]
     private GameObject _gameManager;
 
     private int _idSelectedFrame;
+
+    #endregion Field
+
+    /* ----------------------------------------------------- *\
+    |                                                         |
+    |                         Methods                         |
+    |                                                         |
+    \* ----------------------------------------------------- */
+    #region Methods
+
     // Start is called before the first frame update
     void Start()
     {
@@ -70,4 +87,6 @@ public class Menu : MonoBehaviour
             }
         }
     }
+
+    #endregion Methods
 }

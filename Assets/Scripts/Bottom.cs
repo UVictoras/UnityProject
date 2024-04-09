@@ -4,7 +4,23 @@ using UnityEngine;
 
 public class Bottom : MonoBehaviour
 {
+    /* ----------------------------------------------------- *\
+    |                                                         |
+    |                          Field                          |
+    |                                                         |
+    \* ----------------------------------------------------- */
+    #region Field
+
     public Character _character;
+
+    #endregion Field
+
+    /* ----------------------------------------------------- *\
+    |                                                         |
+    |                         Methods                         |
+    |                                                         |
+    \* ----------------------------------------------------- */
+    #region Methods
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -22,4 +38,6 @@ public class Bottom : MonoBehaviour
             _character._jumpsLeft--;
         }
     }
+
+    #endregion Methods
 }
