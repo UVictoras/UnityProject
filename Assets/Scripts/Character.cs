@@ -32,6 +32,8 @@ public class Character : MonoBehaviour
     public bool _isGrounded;
     public int _jumpsLeft;
 
+    private float _percentage = 0f;
+
 
 
     #endregion Field
@@ -87,10 +89,7 @@ public class Character : MonoBehaviour
             
             _animator.SetBool("isPressed",true);
             baseAttack.SetActive(true);
-            if (baseAttack.GetComponent<Collider2D>().isTrigger)
-            {
-                PlayerBaseAttack._isHitting = true;
-            }
+            
         }
         if (Input.GetKeyUp(KeyCode.E))
         {
@@ -100,5 +99,18 @@ public class Character : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "attack" )
+        {
+            GameObject attack = collision.gameObject;
+            //_animator.SetTrigger("TakeDamage");
+            Vector2 pushBack = new Vector2(_percentage * (1/attack.GetComponent<Bullet>()._strenght) * attack.transform.localPosition.x, _percentage * (1/attack.GetComponent<Bullet>()._strenght) * attack.transform.localPosition.y);
+            _percentage += attack.GetComponent<Bullet>()._damage;                       
+            _body.AddForce(pushBack);
+        }
+    }
+
     #endregion Methods
 }
+

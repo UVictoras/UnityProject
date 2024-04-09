@@ -6,6 +6,9 @@ public class Bullet : MonoBehaviour
 {
     public float speed;
     private Rigidbody2D rigidBody;
+    public float _damage = 10;
+    public float _strenght = 2;
+    public GameObject _bullet;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +19,11 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Playerrr") Destroy(_bullet);
+
     }
 }

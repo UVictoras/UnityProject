@@ -4905,7 +4905,7 @@ GameObject:
   - component: {fileID: 2292129657885353622}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: attack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5037,6 +5037,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  _damage: 10
+  _strenght: 2
+  _bullet: {fileID: 2712384822221356909}
 --- !u!50 &7949452014068294486
 Rigidbody2D:
   serializedVersion: 4

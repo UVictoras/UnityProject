@@ -27,7 +27,7 @@ public class enemyHealth : MonoBehaviour
     {
         if (collision.tag == "BaseAttack")
         {
-            _health -= PlayerBaseAttack._damage;
+            _health -= collision.gameObject.GetComponent<PlayerBaseAttack>()._damage;
         }
     }
 }
