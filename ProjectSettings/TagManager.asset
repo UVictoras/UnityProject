@@ -7,6 +7,7 @@ TagManager:
   - Platform
   - BaseAttack
   - Axe
+  - Character
   layers:
   - Default
   - TransparentFX

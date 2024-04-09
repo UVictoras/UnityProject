@@ -134,11 +134,11 @@ GameObject:
   - component: {fileID: 6806411691101733143}
   - component: {fileID: 4271237237684036118}
   - component: {fileID: 5209408543296675487}
-  - component: {fileID: 3775437129465347636}
   - component: {fileID: 255524759280268252}
+  - component: {fileID: 357662885015028651}
   m_Layer: 0
   m_Name: Zeus
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -252,17 +252,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 8
-  _jumpForce: 110
   _playerId: 0
-  _shootingPoint: {fileID: 1928162342011768192}
+  _hearts: []
+  _isGrounded: 0
+  _percentageText: {fileID: 0}
+  _jumpsLeft: 0
+  _jumpForce: 110
   _bullet: {fileID: 2712384822221356909, guid: 23fd5af7dd3e3f9428409ad7373678bd, type: 3}
   baseAttack: {fileID: 2880138594445665509, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
+  _shootingPoint: {fileID: 1928162342011768192}
   _animator: {fileID: 255524759280268252}
-  _isGrounded: 0
-  _jumpsLeft: 0
-  _percentageText: {fileID: 0}
---- !u!60 &3775437129465347636
-PolygonCollider2D:
+--- !u!95 &255524759280268252
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4478070880692659808}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6c9909adc2ecd2540a56dea46be1b08b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!61 &357662885015028651
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -293,7 +315,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.011828661, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -303,130 +325,6 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.13, y: -1.23}
-      - {x: 0.17, y: -1.17}
-      - {x: 0.31, y: -1.24}
-      - {x: 0.38, y: -1.18}
-      - {x: 0.5, y: -1.17}
-      - {x: 0.55, y: -1.12}
-      - {x: 0.61, y: -0.98999995}
-      - {x: 0.62, y: -0.78999996}
-      - {x: 0.57, y: -0.77}
-      - {x: 0.56, y: -0.59999996}
-      - {x: 0.59999996, y: -0.56}
-      - {x: 0.7, y: -0.51}
-      - {x: 0.85999995, y: -0.41}
-      - {x: 0.93, y: -0.32999998}
-      - {x: 0.96999997, y: -0.22}
-      - {x: 0.96999997, y: 0.12}
-      - {x: 0.95, y: 0.14}
-      - {x: 0.93, y: 0.22999999}
-      - {x: 0.89, y: 0.29}
-      - {x: 0.81, y: 0.34}
-      - {x: 0.59, y: 0.44}
-      - {x: 0.45, y: 0.45}
-      - {x: 0.38, y: 0.37}
-      - {x: 0.45999998, y: 0.48}
-      - {x: 0.51, y: 0.65}
-      - {x: 0.56, y: 0.84999996}
-      - {x: 0.57, y: 1.1}
-      - {x: 0.5, y: 1.17}
-      - {x: 0.16, y: 1.2099999}
-      - {x: 0.07, y: 1.26}
-      - {x: -0.17, y: 1.26}
-      - {x: -0.19, y: 1.22}
-      - {x: -0.26999998, y: 1.22}
-      - {x: -0.32999998, y: 1.18}
-      - {x: -0.38, y: 1.1}
-      - {x: -0.44, y: 0.96999997}
-      - {x: -0.45, y: 0.87}
-      - {x: -0.5, y: 0.81}
-      - {x: -0.56, y: 0.59}
-      - {x: -0.5, y: 0.56}
-      - {x: -0.59, y: 0.42}
-      - {x: -0.59, y: 0.39}
-      - {x: -0.57, y: 0.37}
-      - {x: -0.48999998, y: 0.37}
-      - {x: -0.55, y: 0.19999999}
-      - {x: -0.66999996, y: 0.19999999}
-      - {x: -0.82, y: 0.25}
-      - {x: -0.81, y: 0.32}
-      - {x: -0.88, y: 0.41}
-      - {x: -0.95, y: 0.38}
-      - {x: -0.95, y: 0.26}
-      - {x: -0.90999997, y: 0.19}
-      - {x: -0.85999995, y: 0.08}
-      - {x: -0.79999995, y: 0.049999997}
-      - {x: -0.79999995, y: -0.08}
-      - {x: -0.76, y: -0.14}
-      - {x: -0.62, y: -0.26}
-      - {x: -0.45, y: -0.24}
-      - {x: -0.42, y: -0.29}
-      - {x: -0.48, y: -0.31}
-      - {x: -0.57, y: -0.35999998}
-      - {x: -0.62, y: -0.41}
-      - {x: -0.78, y: -0.51}
-      - {x: -0.9, y: -0.64}
-      - {x: -0.94, y: -0.7}
-      - {x: -0.94, y: -0.94}
-      - {x: -0.9, y: -1}
-      - {x: -0.84999996, y: -1.06}
-      - {x: -0.72999996, y: -1.17}
-      - {x: -0.55, y: -1.22}
-      - {x: -0.41, y: -1.26}
-      - {x: -0.26, y: -1.26}
-      - {x: -0.22, y: -1.23}
-      - {x: -0.19, y: -1.18}
-      - {x: -0.06, y: -1.23}
-    - - {x: -0.29, y: -0.14999999}
-      - {x: -0.29, y: -0.14}
-      - {x: -0.32999998, y: -0.099999994}
-      - {x: -0.39999998, y: -0.099999994}
-      - {x: -0.38, y: -0.099999994}
-      - {x: -0.35, y: -0.07}
-      - {x: -0.35, y: -0.049999997}
-      - {x: -0.32999998, y: -0.049999997}
-      - {x: -0.29999998, y: -0.02}
-      - {x: -0.29999998, y: 0}
-      - {x: -0.28, y: 0}
-      - {x: -0.25, y: 0.03}
-      - {x: -0.25, y: 0.049999997}
-      - {x: -0.24, y: 0.049999997}
-      - {x: -0.24, y: 0.03}
-      - {x: -0.21, y: 0}
-      - {x: -0.19, y: 0}
-      - {x: -0.19, y: -0.02}
-      - {x: -0.16, y: -0.049999997}
-      - {x: -0.14, y: -0.049999997}
-      - {x: -0.14, y: -0.06}
-      - {x: -0.16, y: -0.06}
-      - {x: -0.19, y: -0.089999996}
-      - {x: -0.19, y: -0.099999994}
-      - {x: -0.22, y: -0.11}
-      - {x: -0.24, y: -0.14}
-      - {x: -0.24, y: -0.16}
-      - {x: -0.26, y: -0.14999999}
-  m_UseDelaunayMesh: 0
---- !u!95 &255524759280268252
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4478070880692659808}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6c9909adc2ecd2540a56dea46be1b08b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  serializedVersion: 2
+  m_Size: {x: 1.9907408, y: 2.6}
+  m_EdgeRadius: 0
