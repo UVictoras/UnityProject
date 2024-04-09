@@ -66,6 +66,11 @@ public class Main : MonoBehaviour
         characterInstance.GetComponent<Character>()._playerId = playerId;
         characterInstance.GetComponent<Character>()._percentageText = percentageText;
 
+        if (GameManager._instance._playerOneCharacter == GameManager._instance._playerTwoCharacter && playerId == 2) 
+        {
+            characterInstance.GetComponent<SpriteRenderer>().color = Color.gray;
+        }
+
         playerFrame.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = characterInstance.GetComponent<SpriteRenderer>().sprite;
         playerFrame.transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = _charactersFrames[characterIndex];
 
