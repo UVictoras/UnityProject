@@ -333,6 +333,7 @@ GameObject:
   - component: {fileID: 571361923576404848}
   - component: {fileID: 2766388018478971154}
   - component: {fileID: 6652979834612864128}
+  - component: {fileID: 5049910106716895987}
   m_Layer: 0
   m_Name: Odin
   m_TagString: Character
@@ -507,6 +508,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.18, y: 2.69}
   m_EdgeRadius: 0
+--- !u!95 &5049910106716895987
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2677509656400359759}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1284f115afce3c44f998f773a946beeb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6320858051318045796
 GameObject:
   m_ObjectHideFlags: 0
