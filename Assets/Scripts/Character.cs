@@ -16,7 +16,7 @@ public class Character : MonoBehaviour
     private float _speed;
 
     private int _maxJumps;
-    private int _percentage;
+    private float _percentage;
     private Rigidbody2D _body;
 
     [HideInInspector]
@@ -123,6 +123,28 @@ public class Character : MonoBehaviour
         _percentageText.text = _percentage.ToString() + "%";
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "attack")
+        {
+            GameObject attack = collision.gameObject;
+            if (attack.GetType() == typeof(Bullet))
+            {
+                //_animator.SetTrigger("TakeDamage");
+                Vector2 pushBack = new Vector2(_percentage * (1 / attack.GetComponent<Bullet>()._strenght) * attack.transform.localPosition.x, _percentage * (1 / attack.GetComponent<Bullet>()._strenght) * attack.transform.localPosition.y);
+                _percentage += attack.GetComponent<Bullet>()._damage;
+                _body.AddForce(pushBack);
+            }
+            else if (attack.GetType() == typeof(PlayerBaseAttack))
+            {
+                //_animator.SetTrigger("TakeDamage");
+                Vector2 pushBack = new Vector2(_percentage * (1 / attack.GetComponent<PlayerBaseAttack>()._strenght) * attack.transform.localPosition.x, _percentage * (1 / attack.GetComponent<PlayerBaseAttack>()._strenght) * attack.transform.localPosition.y);
+                _percentage += attack.GetComponent<PlayerBaseAttack>()._damage;
+                _body.AddForce(pushBack);
+            }
+            
+        }
+    }
     private void OnBecameInvisible()
     {
         _hearts[_lifesRemaining - 1].gameObject.SetActive(false);
