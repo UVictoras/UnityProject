@@ -125,20 +125,20 @@ public class Character : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "attack")
+        if (collision.tag == "attack" || collision.tag == "Axe")
         {
             GameObject attack = collision.gameObject;
-            if (attack.GetType() == typeof(Bullet))
+            if (attack.tag == "Axe")
             {
                 //_animator.SetTrigger("TakeDamage");
                 Vector2 pushBack = new Vector2(_percentage * (1 / attack.GetComponent<Bullet>()._strenght) * attack.transform.localPosition.x, _percentage * (1 / attack.GetComponent<Bullet>()._strenght) * attack.transform.localPosition.y);
                 _percentage += attack.GetComponent<Bullet>()._damage;
                 _body.AddForce(pushBack);
             }
-            else if (attack.GetType() == typeof(PlayerBaseAttack))
+            else if (attack.tag == "attack")
             {
                 //_animator.SetTrigger("TakeDamage");
-                Vector2 pushBack = new Vector2(_percentage * (1 / attack.GetComponent<PlayerBaseAttack>()._strenght) * attack.transform.localPosition.x, _percentage * (1 / attack.GetComponent<PlayerBaseAttack>()._strenght) * attack.transform.localPosition.y);
+                Vector2 pushBack = new Vector2((_percentage *  attack.GetComponent<PlayerBaseAttack>()._strenght * attack.transform.localPosition.x) * 5, (_percentage * attack.GetComponent<PlayerBaseAttack>()._strenght * attack.transform.localPosition.y) * 5);
                 _percentage += attack.GetComponent<PlayerBaseAttack>()._damage;
                 _body.AddForce(pushBack);
             }
