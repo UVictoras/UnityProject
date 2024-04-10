@@ -32,7 +32,7 @@ public class Character : MonoBehaviour
     public int _lifesRemaining;
     public float _jumpForce;
     public GameObject _bullet;
-    public GameObject baseAttack;
+    public GameObject _baseAttack;
     public Transform _shootingPoint;
     public Animator _animator;
 
@@ -106,14 +106,14 @@ public class Character : MonoBehaviour
         if (Input.GetKeyDown(_playerId == 1 ? KeyCode.E : KeyCode.Keypad2))
         {
             _animator.SetBool("isPressed", true);
-            baseAttack.SetActive(true);
-            if (baseAttack.GetComponent<Collider2D>().isTrigger)
+            _baseAttack.SetActive(true);
+            if (_baseAttack.GetComponent<Collider2D>().isTrigger)
                 PlayerBaseAttack._isHitting = true;
         }
         if (Input.GetKeyUp(_playerId == 1 ? KeyCode.E : KeyCode.Keypad2))
         {
             _animator.SetBool("isPressed", false);
-            baseAttack.SetActive(false);
+            _baseAttack.SetActive(false);
             PlayerBaseAttack._isHitting = false;
         }
     }
@@ -137,6 +137,7 @@ public class Character : MonoBehaviour
             }
             else if (attack.tag == "attack")
             {
+                print("papagnan");
                 //_animator.SetTrigger("TakeDamage");
                 Vector2 pushBack = new Vector2((_percentage *  attack.GetComponent<PlayerBaseAttack>()._strenght * attack.transform.localPosition.x) * 5, (_percentage * attack.GetComponent<PlayerBaseAttack>()._strenght * attack.transform.localPosition.y) * 5);
                 _percentage += attack.GetComponent<PlayerBaseAttack>()._damage;

@@ -224,7 +224,7 @@ MonoBehaviour:
   _lifesRemaining: 0
   _jumpForce: 110
   _bullet: {fileID: 2712384822221356909, guid: 02a1cd580609af84da3c022e13b50e6a, type: 3}
-  baseAttack: {fileID: 2880138594445665509, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
+  _baseAttack: {fileID: 4384752199526706070}
   _shootingPoint: {fileID: 4531270179557452283}
   _animator: {fileID: 4606267783315686646}
 --- !u!61 &6652979834612864128
@@ -480,6 +480,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
+--- !u!1 &4384752199526706070 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2880138594445665509, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
+  m_PrefabInstance: {fileID: 1954995643985776499}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6809417090806014446 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4998541393753419421, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
