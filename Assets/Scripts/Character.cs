@@ -2,6 +2,7 @@ using UnityEngine;
 using Unity;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.TextCore.Text;
 
 public class Character : MonoBehaviour
 {
@@ -14,23 +15,26 @@ public class Character : MonoBehaviour
 
     [SerializeField]
     private float _speed;
+    [SerializeField]
+    private GameObject _deathParticles;
 
     private int _maxJumps;
-    private float _percentage;
     private Rigidbody2D _body;
 
     [HideInInspector]
     public int _playerId;
     [HideInInspector]
-    public List<GameObject> _hearts;
-    [HideInInspector]
     public bool _isGrounded;
+    [HideInInspector]
+    public List<GameObject> _hearts;
     [HideInInspector]
     public TextMeshProUGUI _percentageText;
 
     public int _jumpsLeft;
     public int _lifesRemaining;
     public float _jumpForce;
+    public float _percentage;
+    public string _name;
     public GameObject _bullet;
     public GameObject baseAttack;
     public Transform _shootingPoint;
@@ -151,7 +155,8 @@ public class Character : MonoBehaviour
         _lifesRemaining--;
         _percentage = 0;
 
-        Main.instance.CheckAlive(gameObject);
+        Quaternion dir = new Quaternion(gameObject.GetComponent<Rigidbody2D>().velocity.x, gameObject.GetComponent<Rigidbody2D>().velocity.y, gameObject.GetComponent<Rigidbody2D>().velocity.y, gameObject.GetComponent<Rigidbody2D>().velocity.x);
+        Instantiate(_deathParticles, transform.position, dir);
 
         transform.position = new Vector3(0, 0, 0);
 

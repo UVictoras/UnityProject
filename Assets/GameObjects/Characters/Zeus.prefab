@@ -254,13 +254,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 8
+  _deathParticles: {fileID: 8229924164873751529, guid: c0ff5ffddd464ba4d95dde7df42f042e, type: 3}
   _playerId: 0
-  _hearts: []
   _isGrounded: 0
+  _hearts: []
   _percentageText: {fileID: 0}
   _jumpsLeft: 0
   _lifesRemaining: 0
   _jumpForce: 110
+  _percentage: 0
+  _name: Zeus
   _bullet: {fileID: 2712384822221356909, guid: 23fd5af7dd3e3f9428409ad7373678bd, type: 3}
   baseAttack: {fileID: 2880138594445665509, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
   _shootingPoint: {fileID: 1928162342011768192}

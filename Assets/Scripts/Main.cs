@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Main : MonoBehaviour
@@ -16,8 +17,6 @@ public class Main : MonoBehaviour
     private GameObject[] _playersFrames;
     [SerializeField] 
     private GameObject[] _characters;
-    [SerializeField]
-    private GameObject _deathParticles;
     [SerializeField] 
     private Sprite[] _backgrounds;
     [SerializeField] 
@@ -26,7 +25,7 @@ public class Main : MonoBehaviour
     private TextMeshProUGUI[] _charactersPercentage;
 
     private GameObject[] _players;
-    
+
     public GameObject[] _hearts;
     public static Main instance;
 
@@ -51,6 +50,71 @@ public class Main : MonoBehaviour
         SetCharacters(1, _charactersPercentage[0], _playersPos[0], _playersFrames[0], GameManager._instance._playerOneCharacter);
         SetCharacters(2, _charactersPercentage[1], _playersPos[1], _playersFrames[1], GameManager._instance._playerTwoCharacter);
     }
+
+    private void Update()
+    {
+        if (_players[0].GetComponent<Character>()._lifesRemaining > _players[1].GetComponent<Character>()._lifesRemaining)
+        {
+            if (_players[0].GetComponent<Character>()._name == "Zeus")
+            {
+                OdinFury.instance.Disable();
+                ZeusWrath.instance.Begin();
+            }
+            else
+            {
+                ZeusWrath.instance.Disable();
+                OdinFury.instance.Begin();
+            }
+        }
+        else if (_players[0].GetComponent<Character>()._lifesRemaining < _players[1].GetComponent<Character>()._lifesRemaining)
+        {
+            if (_players[1].GetComponent<Character>()._name == "Zeus")
+            {
+                OdinFury.instance.Disable();
+                ZeusWrath.instance.Begin();
+            }
+            else
+            {
+                ZeusWrath.instance.Disable();
+                OdinFury.instance.Begin();
+            }
+        }
+        else
+        {
+            if (_players[0].GetComponent<Character>()._percentage < _players[1].GetComponent<Character>()._percentage)
+            {
+                if (_players[0].GetComponent<Character>()._name == "Zeus")
+                {
+                    OdinFury.instance.Disable();
+                    ZeusWrath.instance.Begin();
+                }
+                else
+                {
+                    ZeusWrath.instance.Disable();
+                    OdinFury.instance.Begin();
+                }
+            }
+            else if (_players[0].GetComponent<Character>()._percentage > _players[1].GetComponent<Character>()._percentage)
+            {
+                if (_players[1].GetComponent<Character>()._name == "Zeus")
+                {
+                    OdinFury.instance.Disable();
+                    ZeusWrath.instance.Begin();
+                }
+                else
+                {
+                    ZeusWrath.instance.Disable();
+                    OdinFury.instance.Begin();
+                }
+            }
+            else
+            {
+                ZeusWrath.instance.Disable();
+                OdinFury.instance.Disable();
+            }
+        }
+    }
+
 
     private void SetBackgroundSprite()
     {
@@ -78,15 +142,6 @@ public class Main : MonoBehaviour
 
         if (playerId == 2)
             playerFrame.transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = true;
-    }
-
-    public void CheckAlive(GameObject character)
-    {
-        if (character.GetComponent<Character>()._lifesRemaining == 0)
-        { 
-            Quaternion dir = new Quaternion(character.GetComponent<Rigidbody2D>().velocity.x, character.GetComponent<Rigidbody2D>().velocity.y, character.GetComponent<Rigidbody2D>().velocity.y, character.GetComponent<Rigidbody2D>().velocity.x);
-            Instantiate(_deathParticles, character.transform.position, dir);
-        }
     }
 
     #endregion Methods

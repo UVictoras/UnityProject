@@ -452,13 +452,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 8
+  _deathParticles: {fileID: 8229924164873751529, guid: c0ff5ffddd464ba4d95dde7df42f042e, type: 3}
   _playerId: 0
-  _hearts: []
   _isGrounded: 0
+  _hearts: []
   _percentageText: {fileID: 0}
   _jumpsLeft: 0
   _lifesRemaining: 0
   _jumpForce: 110
+  _percentage: 0
+  _name: Odin
   _bullet: {fileID: 2712384822221356909, guid: 02a1cd580609af84da3c022e13b50e6a, type: 3}
   baseAttack: {fileID: 2880138594445665509, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
   _shootingPoint: {fileID: 4531270179557452283}
@@ -587,7 +590,7 @@ Transform:
   m_GameObject: {fileID: 8065660351752540990}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.04, z: 0}
+  m_LocalPosition: {x: 0, y: -1.18, z: 0}
   m_LocalScale: {x: 0.64, y: 0.82, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
