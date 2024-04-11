@@ -34,8 +34,10 @@ public class Character : MonoBehaviour
     public float _jumpForce;
     public float _percentage;
     public string _name;
+    public string _characterName;
     public GameObject _bullet;
     public GameObject baseAttack;
+    public TextMeshProUGUI _textName;
     public Transform _shootingPoint;
     public Animator _animator;
 
@@ -68,6 +70,7 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _textName.transform.rotation = Quaternion.Euler(0, 0, 0);
         Move();
         Jump();
         Shoot();
@@ -124,6 +127,7 @@ public class Character : MonoBehaviour
     private void UpdateUI()
     {
         _percentageText.text = _percentage.ToString() + "%";
+        _textName.text = _name;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

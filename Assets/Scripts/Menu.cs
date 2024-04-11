@@ -66,7 +66,8 @@ public class Menu : MonoBehaviour
             switch (_frames[_idSelectedFrame].name)
             {
                 case "PlayFrame":
-                    DontDestroyOnLoad(_gameManager);
+                    if (_gameManager != null)
+                        DontDestroyOnLoad(_gameManager);
                     UnityEngine.SceneManagement.SceneManager.LoadScene("MapMenu");
                     break;
                 case "QuitFrame":

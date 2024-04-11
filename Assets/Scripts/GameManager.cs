@@ -17,7 +17,15 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public string _playerTwoCharacter;
     [HideInInspector]
+    public string _playerOneName;
+    [HideInInspector]
+    public string _playerTwoName;
+    [HideInInspector]
     public string _mapChoice;
+    [HideInInspector]
+    public string _winnerName;
+    [HideInInspector]
+    public Sprite _winnerSprite;
 
     public static GameManager _instance;
 
@@ -37,6 +45,9 @@ public class GameManager : MonoBehaviour
         }
         else
             Destroy(gameObject);
+
+        _playerOneName = "Player 1";
+        _playerTwoName = "Player 2";
     }
 
     #endregion Methods

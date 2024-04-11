@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class CharacterMenu : MonoBehaviour
 {
@@ -11,6 +13,8 @@ public class CharacterMenu : MonoBehaviour
 
     [SerializeField] 
     private GameObject[] _players;
+    [SerializeField]
+    private GameObject[] _inputFields;
     [SerializeField] 
     private Transform[] _playerOnePos;
     [SerializeField] 
@@ -86,6 +90,16 @@ public class CharacterMenu : MonoBehaviour
             GameManager._instance._playerTwoCharacter = _playerTwoChoice== 0 ? "Zeus" : "Odin";
             UnityEngine.SceneManagement.SceneManager.LoadScene("MainScene");
         }
+    }
+
+    public void WritePlayerOneName()
+    {
+        GameManager._instance._playerOneName = _inputFields[0].GetComponent<TMPro.TMP_InputField>().text;
+    }
+
+    public void WritePlayerTwoName()
+    {
+        GameManager._instance._playerTwoName = _inputFields[1].GetComponent<TMPro.TMP_InputField>().text;
     }
 
     #endregion Methods

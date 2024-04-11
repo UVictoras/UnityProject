@@ -1,6 +1,7 @@
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Main : MonoBehaviour
 {
@@ -56,7 +57,7 @@ public class Main : MonoBehaviour
         
         if (_players[0].GetComponent<Character>()._lifesRemaining > _players[1].GetComponent<Character>()._lifesRemaining)
         {
-            if (_players[0].GetComponent<Character>()._name == "Zeus")
+            if (_players[0].GetComponent<Character>()._characterName == "Zeus")
             {
                 OdinFury.instance.Disable(_players);
                 ZeusWrath.instance.Begin(_players[1].GetComponent<Character>());
@@ -69,7 +70,7 @@ public class Main : MonoBehaviour
         }
         else if (_players[0].GetComponent<Character>()._lifesRemaining < _players[1].GetComponent<Character>()._lifesRemaining)
         {
-            if (_players[1].GetComponent<Character>()._name == "Zeus")
+            if (_players[1].GetComponent<Character>()._characterName == "Zeus")
             {
                 OdinFury.instance.Disable(_players);
                 ZeusWrath.instance.Begin(_players[0].GetComponent<Character>());
@@ -84,7 +85,7 @@ public class Main : MonoBehaviour
         {
             if (_players[0].GetComponent<Character>()._percentage < _players[1].GetComponent<Character>()._percentage)
             {
-                if (_players[0].GetComponent<Character>()._name == "Zeus")
+                if (_players[0].GetComponent<Character>()._characterName == "Zeus")
                 {
                     OdinFury.instance.Disable(_players);
                     ZeusWrath.instance.Begin(_players[1].GetComponent<Character>());
@@ -97,7 +98,7 @@ public class Main : MonoBehaviour
             }
             else if (_players[0].GetComponent<Character>()._percentage > _players[1].GetComponent<Character>()._percentage)
             {
-                if (_players[1].GetComponent<Character>()._name == "Zeus")
+                if (_players[1].GetComponent<Character>()._characterName == "Zeus")
                 {
                     OdinFury.instance.Disable(_players);
                     ZeusWrath.instance.Begin(_players[0].GetComponent<Character>());
@@ -114,6 +115,8 @@ public class Main : MonoBehaviour
                 OdinFury.instance.Disable(_players);
             }
         }
+
+        CheckPlayerWins();
     }
 
 
@@ -130,6 +133,7 @@ public class Main : MonoBehaviour
 
         characterInstance.GetComponent<Character>()._playerId = playerId;
         characterInstance.GetComponent<Character>()._percentageText = percentageText;
+        characterInstance.GetComponent<Character>()._name = playerId == 1 ? GameManager._instance._playerOneName : GameManager._instance._playerTwoName;
 
         if (GameManager._instance._playerOneCharacter == GameManager._instance._playerTwoCharacter && playerId == 2) 
         {
@@ -143,6 +147,16 @@ public class Main : MonoBehaviour
 
         if (playerId == 2)
             playerFrame.transform.GetChild(0).GetComponent<SpriteRenderer>().flipX = true;
+    }
+
+    private void CheckPlayerWins()
+    {
+        if (_players[0].GetComponent<Character>()._lifesRemaining == 0 || _players[1].GetComponent<Character>()._lifesRemaining == 0)
+        {
+            GameManager._instance._winnerName = _players[0].GetComponent<Character>()._lifesRemaining != 0 ? _players[0].GetComponent<Character>()._name : _players[1].GetComponent<Character>()._name;
+            GameManager._instance._winnerSprite = _players[0].GetComponent<Character>()._lifesRemaining != 0 ? _players[0].GetComponent<SpriteRenderer>().sprite : _players[1].GetComponent<SpriteRenderer>().sprite;
+            SceneManager.LoadScene("WinScene");
+        }
     }
 
     #endregion Methods
