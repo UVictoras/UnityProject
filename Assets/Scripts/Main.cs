@@ -58,26 +58,26 @@ public class Main : MonoBehaviour
         {
             if (_players[0].GetComponent<Character>()._name == "Zeus")
             {
-                OdinFury.instance.Disable();
+                OdinFury.instance.Disable(_players);
                 ZeusWrath.instance.Begin(_players[1].GetComponent<Character>());
             }
             else
             {
                 ZeusWrath.instance.Disable();
-                OdinFury.instance.Begin();
+                OdinFury.instance.Begin(_players);
             }
         }
         else if (_players[0].GetComponent<Character>()._lifesRemaining < _players[1].GetComponent<Character>()._lifesRemaining)
         {
             if (_players[1].GetComponent<Character>()._name == "Zeus")
             {
-                OdinFury.instance.Disable();
+                OdinFury.instance.Disable(_players);
                 ZeusWrath.instance.Begin(_players[0].GetComponent<Character>());
             }
             else
             {
                 ZeusWrath.instance.Disable();
-                OdinFury.instance.Begin();
+                OdinFury.instance.Begin(_players);
             }
         }
         else
@@ -86,32 +86,32 @@ public class Main : MonoBehaviour
             {
                 if (_players[0].GetComponent<Character>()._name == "Zeus")
                 {
-                    OdinFury.instance.Disable();
+                    OdinFury.instance.Disable(_players);
                     ZeusWrath.instance.Begin(_players[1].GetComponent<Character>());
                 }
                 else
                 {
                     ZeusWrath.instance.Disable();
-                    OdinFury.instance.Begin();
+                    OdinFury.instance.Begin(_players);
                 }
             }
             else if (_players[0].GetComponent<Character>()._percentage > _players[1].GetComponent<Character>()._percentage)
             {
                 if (_players[1].GetComponent<Character>()._name == "Zeus")
                 {
-                    OdinFury.instance.Disable();
+                    OdinFury.instance.Disable(_players);
                     ZeusWrath.instance.Begin(_players[0].GetComponent<Character>());
                 }
                 else
                 {
                     ZeusWrath.instance.Disable();
-                    OdinFury.instance.Begin();
+                    OdinFury.instance.Begin(_players);
                 }
             }
             else
             {
                 ZeusWrath.instance.Disable();
-                OdinFury.instance.Disable();
+                OdinFury.instance.Disable(_players);
             }
         }
     }

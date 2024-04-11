@@ -11882,6 +11882,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _myOnlySunshine: {fileID: 1815819169}
   _unityParticleSystem: {fileID: 6396942263796572529, guid: 02090357cb4f9ea40abeb43447a68cfa, type: 3}
+  _boostSpeed: 2
 --- !u!114 &1125435173
 MonoBehaviour:
   m_ObjectHideFlags: 0

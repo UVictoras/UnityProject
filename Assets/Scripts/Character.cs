@@ -13,8 +13,7 @@ public class Character : MonoBehaviour
     \* ----------------------------------------------------- */
     #region Field
 
-    [SerializeField]
-    private float _speed;
+    public float _speed;
     [SerializeField]
     private GameObject _deathParticles;
 
