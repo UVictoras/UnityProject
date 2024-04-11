@@ -159,6 +159,7 @@ public class Character : MonoBehaviour
             if (_timerRunning == false)
             {
                 _percentage += 10;
+                _animator.SetTrigger("takeThunder");
                 StartCoroutine(Timer());
             }
                 
