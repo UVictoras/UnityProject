@@ -8,6 +8,8 @@ TagManager:
   - BaseAttack
   - Axe
   - Character
+  - attack
+  - specialAttack
   layers:
   - Default
   - TransparentFX
