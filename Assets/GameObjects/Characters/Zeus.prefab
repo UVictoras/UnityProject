@@ -25,7 +25,6 @@ Transform:
   m_GameObject: {fileID: 950589428924639891}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6, y: -0.06, z: 0}
   m_LocalPosition: {x: 1.88, y: 0.2, z: 0}
   m_LocalScale: {x: 1.8078208, y: 1.7118937, z: 1}
   m_ConstrainProportionsScale: 0
@@ -139,7 +138,6 @@ GameObject:
   - component: {fileID: 357662885015028651}
   m_Layer: 0
   m_Name: Zeus
-  m_TagString: Character
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,7 +156,7 @@ Transform:
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3685321702476333383}
+  - {fileID: 5974357817501539459}
   - {fileID: 1928162342011768192}
   - {fileID: 7674209792101796984}
   - {fileID: 1254819947115027998}
@@ -262,6 +260,7 @@ MonoBehaviour:
   _isGrounded: 0
   _hearts: []
   _percentageText: {fileID: 0}
+  _direction: 
   _jumpsLeft: 0
   _lifesRemaining: 0
   _jumpForce: 110
@@ -269,12 +268,8 @@ MonoBehaviour:
   _name: Player 1
   _characterName: Zeus
   _bullet: {fileID: 2712384822221356909, guid: 23fd5af7dd3e3f9428409ad7373678bd, type: 3}
-<<<<<<< HEAD
-  baseAttack: {fileID: 2880138594445665509, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
   _textName: {fileID: 5271892518025891869}
-=======
-  _baseAttack: {fileID: 5873477525626309439}
->>>>>>> knock-back-de-con
+  _baseAttack: {fileID: 3481004236082271995}
   _shootingPoint: {fileID: 1928162342011768192}
   _animator: {fileID: 255524759280268252}
 --- !u!95 &255524759280268252
@@ -663,7 +658,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1001 &8537283902293798874
+--- !u!1001 &1708918292934291998
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -720,13 +715,13 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
---- !u!4 &3685321702476333383 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4998541393753419421, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
-  m_PrefabInstance: {fileID: 8537283902293798874}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5873477525626309439 stripped
+--- !u!1 &3481004236082271995 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2880138594445665509, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
-  m_PrefabInstance: {fileID: 8537283902293798874}
+  m_PrefabInstance: {fileID: 1708918292934291998}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5974357817501539459 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4998541393753419421, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
+  m_PrefabInstance: {fileID: 1708918292934291998}
   m_PrefabAsset: {fileID: 0}

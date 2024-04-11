@@ -38,12 +38,8 @@ public class Character : MonoBehaviour
     public string _name;
     public string _characterName;
     public GameObject _bullet;
-<<<<<<< HEAD
-    public GameObject baseAttack;
     public TextMeshProUGUI _textName;
-=======
     public GameObject _baseAttack;
->>>>>>> knock-back-de-con
     public Transform _shootingPoint;
     public Animator _animator;
 
@@ -125,8 +121,6 @@ public class Character : MonoBehaviour
         if (Input.GetKeyDown(_playerId == 1 ? KeyCode.E : KeyCode.Keypad2))
         {
             _animator.SetBool("isPressed", true);
-            baseAttack.SetActive(true);
-            if (baseAttack.GetComponent<Collider2D>().isTrigger)
             _baseAttack.SetActive(true);
             if (_baseAttack.GetComponent<Collider2D>().isTrigger)
                 PlayerBaseAttack._isHitting = true;
@@ -134,7 +128,6 @@ public class Character : MonoBehaviour
         if (Input.GetKeyUp(_playerId == 1 ? KeyCode.E : KeyCode.Keypad2))
         {
             _animator.SetBool("isPressed", false);
-            baseAttack.SetActive(false);
             _baseAttack.SetActive(false);
             PlayerBaseAttack._isHitting = false;
         }
@@ -148,26 +141,22 @@ public class Character : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "attack")
+
         
         if (collision.tag == "attack" || collision.tag == "Axe" || collision.tag == "Player" || collision.tag == "specialAttack")
         {
-            print("aaa");
             GameObject attack = collision.gameObject;
             if (attack.GetType() == typeof(Bullet))
             if (attack.tag == "Axe")
             {
                 //_animator.SetTrigger("TakeDamage");
-                Vector2 pushBack = new Vector2(_percentage * (1 / attack.GetComponent<Bullet>()._strenght) * attack.transform.localPosition.x, _percentage * (1 / attack.GetComponent<Bullet>()._strenght) * attack.transform.localPosition.y);
                 Vector2 pushBack = new Vector2((_percentage * attack.GetComponent<Bullet>()._strenght * attack.transform.localPosition.x) * 2, (_percentage * 1 / attack.GetComponent<Bullet>()._strenght * attack.transform.localPosition.y) * 2);
                 _percentage += attack.GetComponent<Bullet>()._damage;
                 _body.AddForce(pushBack);
             }
-            else if (attack.GetType() == typeof(PlayerBaseAttack))
             else if (attack.tag == "attack")
             {
                 //_animator.SetTrigger("TakeDamage");
-                Vector2 pushBack = new Vector2(_percentage * (1 / attack.GetComponent<PlayerBaseAttack>()._strenght) * attack.transform.localPosition.x, _percentage * (1 / attack.GetComponent<PlayerBaseAttack>()._strenght) * attack.transform.localPosition.y);
                 Vector2 pushBack = new Vector2((_percentage *  attack.GetComponent<PlayerBaseAttack>()._strenght * attack.transform.localPosition.x) * 2, (_percentage * attack.GetComponent<PlayerBaseAttack>()._strenght * attack.transform.localPosition.y) * 2);
                 _percentage += attack.GetComponent<PlayerBaseAttack>()._damage;
                 _body.AddForce(pushBack);
