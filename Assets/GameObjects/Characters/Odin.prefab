@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 2766388018478971154}
   - component: {fileID: 6652979834612864128}
   - component: {fileID: 4606267783315686646}
+  - component: {fileID: -3981755146819055473}
   m_Layer: 0
   m_Name: Odin
   m_TagString: Player
@@ -293,6 +294,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-3981755146819055473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2677509656400359759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed0281ad3b3581428a193a8844381c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 20
+  _strenght: 10
+  _body: {fileID: 571361923576404848}
+  _selfTransform: {fileID: 4041063284503153586}
 --- !u!1 &6320858051318045796
 GameObject:
   m_ObjectHideFlags: 0
