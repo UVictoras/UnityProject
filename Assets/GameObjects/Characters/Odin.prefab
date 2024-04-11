@@ -230,7 +230,7 @@ MonoBehaviour:
   _percentage: 0
   _name: Player 1
   _characterName: Odin
-  _bullet: {fileID: 2712384822221356909, guid: 02a1cd580609af84da3c022e13b50e6a, type: 3}
+  _bullet: {fileID: 6457978435947391554, guid: 1fbb9ed29af0c5446a31175c00405e43, type: 3}
   _textName: {fileID: 6201969405141961689}
   _baseAttack: {fileID: 2880138594445665509, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
   _shootingPoint: {fileID: 4531270179557452283}
@@ -447,7 +447,7 @@ Transform:
   m_GameObject: {fileID: 6320858051318045796}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.73, y: -0.64, z: 0}
+  m_LocalPosition: {x: 2.37, y: 0.1, z: 0}
   m_LocalScale: {x: 1.8078208, y: 1.7118937, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

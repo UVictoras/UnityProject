@@ -17,6 +17,8 @@ public class Bullet : MonoBehaviour
     private bool _canCycle;
     public float _damage = 10;
     public float _strenght = 2;
+    [HideInInspector]
+    public string _direction;
 
     #endregion Field
 
@@ -40,7 +42,7 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         if (gameObject.tag == "Axe")
-            gameObject.transform.Rotate(0.0f, 0.0f, 360.0f * -Time.deltaTime);
+            gameObject.GetComponentInChildren<Transform>().Rotate(0.0f, 0.0f, 360.0f * -Time.deltaTime);
 
         if (_lifeTime == 0)
         {

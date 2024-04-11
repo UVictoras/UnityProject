@@ -3,6 +3,7 @@ using Unity;
 using TMPro;
 using System.Collections.Generic;
 using UnityEngine.TextCore.Text;
+using System.Collections;
 
 public class Character : MonoBehaviour
 {
@@ -114,6 +115,7 @@ public class Character : MonoBehaviour
     {
         if (Input.GetButtonDown(_playerId == 1 ? "Fire1" : "Fire2"))
             Instantiate(_bullet, _shootingPoint.position, transform.rotation);
+        _bullet.GetComponent<Bullet>()._direction = _direction;
     }
 
     private void HandleBaseAttack()
@@ -122,15 +124,13 @@ public class Character : MonoBehaviour
         {
             _animator.SetBool("isPressed", true);
             _baseAttack.SetActive(true);
-            if (_baseAttack.GetComponent<Collider2D>().isTrigger)
-                PlayerBaseAttack._isHitting = true;
-        }
-        if (Input.GetKeyUp(_playerId == 1 ? KeyCode.E : KeyCode.Keypad2))
-        {
+            StartCoroutine(Wait());
             _animator.SetBool("isPressed", false);
             _baseAttack.SetActive(false);
-            PlayerBaseAttack._isHitting = false;
         }
+        
+            
+       
     }
 
     private void UpdateUI()
@@ -146,18 +146,27 @@ public class Character : MonoBehaviour
         if (collision.tag == "attack" || collision.tag == "Axe" || collision.tag == "Player" || collision.tag == "specialAttack")
         {
             GameObject attack = collision.gameObject;
-            if (attack.GetType() == typeof(Bullet))
             if (attack.tag == "Axe")
             {
                 //_animator.SetTrigger("TakeDamage");
-                Vector2 pushBack = new Vector2((_percentage * attack.GetComponent<Bullet>()._strenght * attack.transform.localPosition.x) * 2, (_percentage * 1 / attack.GetComponent<Bullet>()._strenght * attack.transform.localPosition.y) * 2);
-                _percentage += attack.GetComponent<Bullet>()._damage;
-                _body.AddForce(pushBack);
+                if (attack.GetComponent<Bullet>()._direction == "right")
+                {
+                    Vector2 pushBack = new Vector2((_percentage * attack.GetComponent<Bullet>()._strenght * attack.transform.localPosition.x) * 1.2f, (_percentage * 1 / attack.GetComponent<Bullet>()._strenght * attack.transform.localPosition.y) * 1.2f);
+                    _percentage += attack.GetComponent<Bullet>()._damage;
+                    _body.AddForce(pushBack);
+                }
+                else
+                {
+                    Vector2 pushBack = new Vector2(-(_percentage * attack.GetComponent<Bullet>()._strenght * attack.transform.localPosition.x) * 1.2f, (_percentage * 1 / attack.GetComponent<Bullet>()._strenght * attack.transform.localPosition.y) * 1.2f);
+                    _percentage += attack.GetComponent<Bullet>()._damage;
+                    _body.AddForce(pushBack);
+                }
+                
             }
             else if (attack.tag == "attack")
             {
                 //_animator.SetTrigger("TakeDamage");
-                Vector2 pushBack = new Vector2((_percentage *  attack.GetComponent<PlayerBaseAttack>()._strenght * attack.transform.localPosition.x) * 2, (_percentage * attack.GetComponent<PlayerBaseAttack>()._strenght * attack.transform.localPosition.y) * 2);
+                Vector2 pushBack = new Vector2((_percentage *  attack.GetComponent<PlayerBaseAttack>()._strenght * attack.transform.localPosition.x) * 1.2f, (_percentage * attack.GetComponent<PlayerBaseAttack>()._strenght * attack.transform.localPosition.y) * 1.2f);
                 _percentage += attack.GetComponent<PlayerBaseAttack>()._damage;
                 _body.AddForce(pushBack);
             }
@@ -167,11 +176,20 @@ public class Character : MonoBehaviour
                 {
                     if (attack.GetComponent<SpecialAttackOdin>()._isActive)
                     {
-                        Vector2 pushBack = new Vector2((_percentage * attack.GetComponent<SpecialAttackOdin>()._strenght * attack.transform.localPosition.x) * 2, (_percentage * attack.GetComponent<SpecialAttackOdin>()._strenght * attack.transform.localPosition.y) * 2);
+                        //_animator.SetTrigger("TakeDamage");
+                        print("pipi");
+                        Vector2 pushBack = new Vector2((_percentage * attack.GetComponent<SpecialAttackOdin>()._strenght * attack.transform.localPosition.x) * 3, (_percentage * attack.GetComponent<SpecialAttackOdin>()._strenght * attack.transform.localPosition.y) * 3);
                         _percentage += attack.GetComponent<SpecialAttackOdin>()._damage;
                         _body.AddForce(pushBack);
                     }
                 }
+            }
+            else if (attack.tag == "specialAttack")
+            {
+                //_animator.SetTrigger("TakeDamage");
+                Vector2 pushBack = new Vector2((_percentage * attack.GetComponent<specialAttackZeus>()._strenght * attack.transform.localPosition.x) * 1.2f, (_percentage * attack.GetComponent<specialAttackZeus>()._strenght * attack.transform.localPosition.y) * 1.2f);
+                _percentage += attack.GetComponent<specialAttackZeus>()._damage;
+                _body.AddForce(pushBack);
             }
             
         }
@@ -191,6 +209,10 @@ public class Character : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+    private IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1.0f);
     }
 
     #endregion Methods

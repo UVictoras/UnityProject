@@ -33,7 +33,6 @@ public class SpecialAttackOdin : MonoBehaviour
     private IEnumerator WaitIsActive()
     {
         yield return new WaitForSeconds(_dashingTime);
-        print("i");
     }
 }
 
