@@ -465,7 +465,7 @@ MonoBehaviour:
   _bullet: {fileID: 2712384822221356909, guid: 02a1cd580609af84da3c022e13b50e6a, type: 3}
   baseAttack: {fileID: 2880138594445665509, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
   _shootingPoint: {fileID: 4531270179557452283}
-  _animator: {fileID: 0}
+  _animator: {fileID: 5049910106716895987}
 --- !u!61 &6652979834612864128
 BoxCollider2D:
   m_ObjectHideFlags: 0

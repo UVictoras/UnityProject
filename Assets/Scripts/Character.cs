@@ -136,14 +136,14 @@ public class Character : MonoBehaviour
             GameObject attack = collision.gameObject;
             if (attack.GetType() == typeof(Bullet))
             {
-                //_animator.SetTrigger("TakeDamage");
+                _animator.SetTrigger("takeDamage");
                 Vector2 pushBack = new Vector2(_percentage * (1 / attack.GetComponent<Bullet>()._strenght) * attack.transform.localPosition.x, _percentage * (1 / attack.GetComponent<Bullet>()._strenght) * attack.transform.localPosition.y);
                 _percentage += attack.GetComponent<Bullet>()._damage;
                 _body.AddForce(pushBack);
             }
             else if (attack.GetType() == typeof(PlayerBaseAttack))
             {
-                //_animator.SetTrigger("TakeDamage");
+                _animator.SetTrigger("takeDamage");
                 Vector2 pushBack = new Vector2(_percentage * (1 / attack.GetComponent<PlayerBaseAttack>()._strenght) * attack.transform.localPosition.x, _percentage * (1 / attack.GetComponent<PlayerBaseAttack>()._strenght) * attack.transform.localPosition.y);
                 _percentage += attack.GetComponent<PlayerBaseAttack>()._damage;
                 _body.AddForce(pushBack);
