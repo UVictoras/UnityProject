@@ -95,11 +95,15 @@ public class CharacterMenu : MonoBehaviour
     public void WritePlayerOneName()
     {
         GameManager._instance._playerOneName = _inputFields[0].GetComponent<TMPro.TMP_InputField>().text;
+        if (GameManager._instance._playerOneName == "")
+            GameManager._instance._playerOneName = "Player 1";
     }
 
     public void WritePlayerTwoName()
     {
         GameManager._instance._playerTwoName = _inputFields[1].GetComponent<TMPro.TMP_InputField>().text;
+        if (GameManager._instance._playerTwoName == "")
+            GameManager._instance._playerTwoName = "Player 2";
     }
 
     #endregion Methods

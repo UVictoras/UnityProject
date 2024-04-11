@@ -120,7 +120,7 @@ public class Character : MonoBehaviour
 
     private void HandleBaseAttack()
     {
-        if (Input.GetKeyDown(_playerId == 1 ? KeyCode.E : KeyCode.Keypad2))
+        if (Input.GetButtonDown(_playerId == 1 ? "Attack1" : "Attack2"))
         {
             _animator.SetBool("isPressed", true);
             _baseAttack.SetActive(true);
@@ -128,9 +128,6 @@ public class Character : MonoBehaviour
             _animator.SetBool("isPressed", false);
             _baseAttack.SetActive(false);
         }
-        
-            
-       
     }
 
     private void UpdateUI()
@@ -141,8 +138,6 @@ public class Character : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        
         if (collision.tag == "attack" || collision.tag == "Axe" || collision.tag == "Player" || collision.tag == "specialAttack")
         {
             GameObject attack = collision.gameObject;

@@ -30,12 +30,15 @@ public class WinScript : MonoBehaviour
     #region Methods
     private void Start()
     {
+        _textCanBlink = true;
+        _godCanFlip = true;
         _isFlipped = false;
     }
+
     private void Update()
     {
         _winText.text = GameManager._instance._winnerName + " Wins !";
-        transform.GetChild(1).GetComponent<SpriteRenderer>().sprite = GameManager._instance._winnerSprite;
+        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = GameManager._instance._winnerSprite;
 
         CheckIfBlink();
         CheckIfFlip();
@@ -79,7 +82,7 @@ public class WinScript : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        transform.GetChild(1).transform.rotation = Quaternion.Euler(0, _isFlipped == false ? 180 : 0, 0);
+        transform.GetChild(0).GetComponent<Transform>().rotation = Quaternion.Euler(0, _isFlipped == false ? 180 : 0, 0);
 
         _godCanFlip = true;
 
