@@ -137,6 +137,7 @@ public class Character : MonoBehaviour
     private void UpdateUI()
     {
         _percentageText.text = _percentage.ToString() + "%";
+        _percentageText.color = new Color(_percentage/255, 0, 0, 1);
         _textName.text = _name;
     }
 
@@ -147,7 +148,7 @@ public class Character : MonoBehaviour
             GameObject attack = collision.gameObject;
             if (attack.tag == "Axe")
             {
-                //_animator.SetTrigger("TakeDamage");
+                _animator.SetTrigger("takeDamage");
                 if (attack.GetComponent<Bullet>()._direction == "right")
                 {
                     Vector2 pushBack = new Vector2((_percentage * attack.GetComponent<Bullet>()._strenght * attack.transform.localPosition.x) * 1.2f, (_percentage * 1 / attack.GetComponent<Bullet>()._strenght * attack.transform.localPosition.y) * 1.2f);
@@ -164,7 +165,7 @@ public class Character : MonoBehaviour
             }
             else if (attack.tag == "attack")
             {
-                _animator.SetTrigger("TakeDamage");
+                _animator.SetTrigger("takeDamage");
                 Vector2 pushBack = new Vector2((_percentage *  attack.GetComponent<PlayerBaseAttack>()._strenght * attack.transform.localPosition.x) * 1.2f, (_percentage * attack.GetComponent<PlayerBaseAttack>()._strenght * attack.transform.localPosition.y) * 1.2f);
                 _percentage += attack.GetComponent<PlayerBaseAttack>()._damage;
                 _body.AddForce(pushBack);
@@ -175,7 +176,7 @@ public class Character : MonoBehaviour
                 {
                     if (attack.GetComponent<SpecialAttackOdin>()._isActive)
                     {
-                        //_animator.SetTrigger("TakeDamage");
+                        _animator.SetTrigger("takeDamage");
                         print("pipi");
                         Vector2 pushBack = new Vector2((_percentage * attack.GetComponent<SpecialAttackOdin>()._strenght * attack.transform.localPosition.x) * 3, (_percentage * attack.GetComponent<SpecialAttackOdin>()._strenght * attack.transform.localPosition.y) * 3);
                         _percentage += attack.GetComponent<SpecialAttackOdin>()._damage;
@@ -185,7 +186,7 @@ public class Character : MonoBehaviour
             }
             else if (attack.tag == "specialAttack")
             {
-                _animator.SetTrigger("TakeDamage");
+                _animator.SetTrigger("takeDamage");
                 Vector2 pushBack = new Vector2((_percentage * attack.GetComponent<specialAttackZeus>()._strenght * attack.transform.localPosition.x) * 1.2f, (_percentage * attack.GetComponent<specialAttackZeus>()._strenght * attack.transform.localPosition.y) * 1.2f);
                 _percentage += attack.GetComponent<specialAttackZeus>()._damage;
                 _body.AddForce(pushBack);
