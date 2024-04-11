@@ -24,6 +24,8 @@ public class OdinFury : MonoBehaviour
     [SerializeField]
     private int _boostSpeed;
 
+    private Character _enemy;
+    private bool _timerRunning = false;
     #endregion Field
 
     /* ----------------------------------------------------- *\
@@ -47,29 +49,42 @@ public class OdinFury : MonoBehaviour
             return;
 
 
+        if (_timerRunning == false)
+        {
+            StartCoroutine(Timer());
+            _enemy._percentage += 1;
+        }
+
+
     }
 
-    public void Begin(GameObject[] players)
+
+    public IEnumerator Timer()
+    {
+        _timerRunning = true;
+        yield return new WaitForSeconds(1);
+        _timerRunning = false;
+
+    }
+
+    public void Begin(Character player, Character enemy)
     {
         if (_isActive == true)
             return;
 
         _isActive = true;
-
+        _enemy = enemy;
         _myOnlySunshine.GetComponent<Light2D>().color = new Color(0.13333333333f, 0.0f, 0.0f, 0.5f);
 
         _itsASystemInsideOfUnity = Instantiate(_unityParticleSystem, new Vector3(0.0f, 0.0f, 0.0f), transform.rotation);
         _itsASystemInsideOfUnity.transform.localScale *= 25.0f;
 
 
-        for(int i = 0; i < players.Length; i++)
-        {
-            players[i].GetComponent<Character>()._speed *= _boostSpeed;
-        }
+        player._speed *= _boostSpeed;
 
     }
 
-    public void Disable(GameObject[] players)
+    public void Disable(Character player)
     {
         if (_isActive == false)
             return;
@@ -78,10 +93,9 @@ public class OdinFury : MonoBehaviour
 
         _myOnlySunshine.GetComponent<Light2D>().color = Color.white;
 
-        for (int i = 0; i < players.Length; i++)
-        {
-            players[i].GetComponent<Character>()._speed /= _boostSpeed;
-        }
+
+        
+        player._speed /= _boostSpeed;
 
         Destroy(_itsASystemInsideOfUnity);
     }

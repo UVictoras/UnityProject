@@ -10,6 +10,7 @@ TagManager:
   - Character
   - attack
   - specialAttack
+  - ZeusWrath
   layers:
   - Default
   - TransparentFX

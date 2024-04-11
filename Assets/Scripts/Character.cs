@@ -44,6 +44,10 @@ public class Character : MonoBehaviour
     public Transform _shootingPoint;
     public Animator _animator;
 
+    public AudioSource _audioSource;
+    public AudioClip _sound;
+
+    private bool _timerRunning = false;
     #endregion Field
 
     /* ----------------------------------------------------- *\
@@ -91,7 +95,7 @@ public class Character : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, horizontalInput < 0 ? 180 : 0, 0);
         if (horizontalInput < 0 )
             _direction = "left";
-        else if (horizontalInput > 0 ) 
+        else if (horizontalInput > 0 )
             _direction = "right";
         transform.rotation = Quaternion.Euler(0, _direction == "left"? 180 : 0, 0);
     }
@@ -156,16 +160,16 @@ public class Character : MonoBehaviour
                     _percentage += attack.GetComponent<Bullet>()._damage;
                     _body.AddForce(pushBack);
                 }
-                
+
             }
             else if (attack.tag == "attack")
             {
-                //_animator.SetTrigger("TakeDamage");
+                _animator.SetTrigger("TakeDamage");
                 Vector2 pushBack = new Vector2((_percentage *  attack.GetComponent<PlayerBaseAttack>()._strenght * attack.transform.localPosition.x) * 1.2f, (_percentage * attack.GetComponent<PlayerBaseAttack>()._strenght * attack.transform.localPosition.y) * 1.2f);
                 _percentage += attack.GetComponent<PlayerBaseAttack>()._damage;
                 _body.AddForce(pushBack);
             }
-            else if (attack.tag == "Player") 
+            else if (attack.tag == "Player")
             {
                 if (attack.GetComponent<SpecialAttackOdin>() != null)
                 {
@@ -181,13 +185,38 @@ public class Character : MonoBehaviour
             }
             else if (attack.tag == "specialAttack")
             {
-                //_animator.SetTrigger("TakeDamage");
+                _animator.SetTrigger("TakeDamage");
                 Vector2 pushBack = new Vector2((_percentage * attack.GetComponent<specialAttackZeus>()._strenght * attack.transform.localPosition.x) * 1.2f, (_percentage * attack.GetComponent<specialAttackZeus>()._strenght * attack.transform.localPosition.y) * 1.2f);
                 _percentage += attack.GetComponent<specialAttackZeus>()._damage;
                 _body.AddForce(pushBack);
             }
-            
+
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "ZeusWrath" && this == ZeusWrath.instance._enemy)
+        {
+            if (_timerRunning == false)
+            {
+                _percentage += 10;
+                _audioSource.PlayOneShot(_sound);
+                _animator.SetTrigger("takeThunder");
+                StartCoroutine(Timer());
+            }
+
+        }
+
+    }
+
+    public IEnumerator Timer()
+    {
+        _timerRunning = true;
+        yield return new WaitForSeconds(1);
+        _timerRunning = false;
+
+
     }
     private void OnBecameInvisible()
     {
