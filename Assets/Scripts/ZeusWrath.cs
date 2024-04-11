@@ -36,6 +36,10 @@ public class ZeusWrath : MonoBehaviour
 
     private GameObject _instantied;
 
+
+    public AudioSource _audioSource;
+    public AudioClip _sound;
+
     #endregion Field
 
     /* ----------------------------------------------------- *\
@@ -73,6 +77,7 @@ public class ZeusWrath : MonoBehaviour
             }
             _instantied = Instantiate(_thunder);
             _instantied.transform.position = _randomPoint.position;
+            _audioSource.PlayOneShot(_sound);
             StartCoroutine(Timer());
             _transformActually = _randomPoint;
             
@@ -110,6 +115,7 @@ public class ZeusWrath : MonoBehaviour
         _isActive = false;
 
         _myOnlySunshine.GetComponent<Light2D>().color = Color.white;
+        _audioSource.Stop();
         Destroy(_instantied);
         Destroy(_itsASystemInsideOfUnity);
     }

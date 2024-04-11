@@ -40,6 +40,8 @@ public class Character : MonoBehaviour
     public Transform _shootingPoint;
     public Animator _animator;
 
+    public AudioSource _audioSource;
+    public AudioClip _sound;
 
     private bool _timerRunning = false;
     #endregion Field
@@ -159,6 +161,7 @@ public class Character : MonoBehaviour
             if (_timerRunning == false)
             {
                 _percentage += 10;
+                _audioSource.PlayOneShot(_sound);
                 _animator.SetTrigger("takeThunder");
                 StartCoroutine(Timer());
             }
