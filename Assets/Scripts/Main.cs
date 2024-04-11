@@ -53,12 +53,13 @@ public class Main : MonoBehaviour
 
     private void Update()
     {
+        
         if (_players[0].GetComponent<Character>()._lifesRemaining > _players[1].GetComponent<Character>()._lifesRemaining)
         {
             if (_players[0].GetComponent<Character>()._name == "Zeus")
             {
                 OdinFury.instance.Disable();
-                ZeusWrath.instance.Begin();
+                ZeusWrath.instance.Begin(_players[1].GetComponent<Character>());
             }
             else
             {
@@ -71,7 +72,7 @@ public class Main : MonoBehaviour
             if (_players[1].GetComponent<Character>()._name == "Zeus")
             {
                 OdinFury.instance.Disable();
-                ZeusWrath.instance.Begin();
+                ZeusWrath.instance.Begin(_players[0].GetComponent<Character>());
             }
             else
             {
@@ -86,7 +87,7 @@ public class Main : MonoBehaviour
                 if (_players[0].GetComponent<Character>()._name == "Zeus")
                 {
                     OdinFury.instance.Disable();
-                    ZeusWrath.instance.Begin();
+                    ZeusWrath.instance.Begin(_players[1].GetComponent<Character>());
                 }
                 else
                 {
@@ -99,7 +100,7 @@ public class Main : MonoBehaviour
                 if (_players[1].GetComponent<Character>()._name == "Zeus")
                 {
                     OdinFury.instance.Disable();
-                    ZeusWrath.instance.Begin();
+                    ZeusWrath.instance.Begin(_players[0].GetComponent<Character>());
                 }
                 else
                 {

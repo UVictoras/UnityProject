@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -21,6 +22,10 @@ public class ZeusWrath : MonoBehaviour
     public GameObject _unityParticleSystem;
     public static ZeusWrath instance;
 
+
+    private Character _enemy;
+    private bool _timerRunning = false;
+
     #endregion Field
 
     /* ----------------------------------------------------- *\
@@ -36,6 +41,8 @@ public class ZeusWrath : MonoBehaviour
             instance = this;
         else
             Destroy(gameObject);
+
+
     }
 
     private void Update()
@@ -44,14 +51,28 @@ public class ZeusWrath : MonoBehaviour
             return;
 
 
+        if(_timerRunning == false)
+        {
+            StartCoroutine(Timer());
+            _enemy._percentage += 1;
+        }
+        
+        
     }
+    public IEnumerator Timer()
+    {
+        _timerRunning = true;
+        yield return new WaitForSeconds(5);
+        _timerRunning = false;
 
-    public void Begin()
+    }
+    public void Begin(Character enemy)
     {
         if (_isActive == true)
             return;
 
         _isActive = true;
+        _enemy = enemy;
 
         _myOnlySunshine.GetComponent<Light2D>().color = new Color(0.0f, 0.0f, 0.13333333333f, 0.5f);
 
