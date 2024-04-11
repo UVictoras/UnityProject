@@ -17,7 +17,6 @@ public class Bullet : MonoBehaviour
     private bool _canCycle;
     public float _damage = 10;
     public float _strenght = 2;
-    private GameObject _bullet;
 
     #endregion Field
 
@@ -35,7 +34,6 @@ public class Bullet : MonoBehaviour
         rigidBody.velocity = transform.right * speed;
         _lifeTime = 5;
         _canCycle = true;
-        _bullet = GetComponent<GameObject>();
     }
 
     // Update is called once per frame
@@ -67,8 +65,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Player") Destroy(_bullet);
-
+        Destroy(gameObject);
     }
 
     #endregion Methods

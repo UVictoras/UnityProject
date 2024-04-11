@@ -98,9 +98,12 @@ GameObject:
   - component: {fileID: 2766388018478971154}
   - component: {fileID: 6652979834612864128}
   - component: {fileID: 5049910106716895987}
+  - component: {fileID: 4606267783315686646}
+  - component: {fileID: -3981755146819055473}
   m_Layer: 0
   m_Name: Odin
   m_TagString: Character
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,10 +121,14 @@ Transform:
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 6809417090806014446}
   - {fileID: 4531270179557452283}
   - {fileID: 2096012954696315525}
   - {fileID: 7910141875030878076}
+<<<<<<< HEAD
   - {fileID: 3600915765425626411}
+=======
+>>>>>>> knock-back-de-con
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8432985576076582357
@@ -228,10 +235,15 @@ MonoBehaviour:
   _name: Player 1
   _characterName: Odin
   _bullet: {fileID: 2712384822221356909, guid: 02a1cd580609af84da3c022e13b50e6a, type: 3}
+<<<<<<< HEAD
   baseAttack: {fileID: 2880138594445665509, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
   _textName: {fileID: 6201969405141961689}
+=======
+  _baseAttack: {fileID: 4384752199526706070}
+>>>>>>> knock-back-de-con
   _shootingPoint: {fileID: 4531270179557452283}
   _animator: {fileID: 0}
+  _animator: {fileID: 4606267783315686646}
 --- !u!61 &6652979834612864128
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -278,6 +290,7 @@ BoxCollider2D:
   m_Size: {x: 2.18, y: 2.69}
   m_EdgeRadius: 0
 --- !u!95 &5049910106716895987
+--- !u!95 &4606267783315686646
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -288,6 +301,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 1284f115afce3c44f998f773a946beeb, type: 2}
+  m_Controller: {fileID: 9100000, guid: e68befa4b4abe3b40bf182057b9a7cae, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -298,6 +312,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+<<<<<<< HEAD
 --- !u!1 &4269799260531306202
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,11 +376,15 @@ Canvas:
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &3980127841841047526
+=======
+--- !u!114 &-3981755146819055473
+>>>>>>> knock-back-de-con
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 4269799260531306202}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -400,6 +419,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+=======
+  m_GameObject: {fileID: 2677509656400359759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ed0281ad3b3581428a193a8844381c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 20
+  _strenght: 10
+  _body: {fileID: 571361923576404848}
+  _selfTransform: {fileID: 4041063284503153586}
+>>>>>>> knock-back-de-con
 --- !u!1 &6320858051318045796
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,6 +457,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.73, y: -0.64, z: 0}
+  m_LocalPosition: {x: 2.009, y: 0.183, z: 0}
   m_LocalScale: {x: 1.8078208, y: 1.7118937, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -522,6 +554,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.360599, y: 0.6463835}
   m_EdgeRadius: 0
+<<<<<<< HEAD
 --- !u!1 &9124699283657790786
 GameObject:
   m_ObjectHideFlags: 0
@@ -656,3 +689,80 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+=======
+--- !u!1001 &1954995643985776499
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4041063284503153586}
+    m_Modifications:
+    - target: {fileID: 2880138594445665509, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
+      propertyPath: m_Name
+      value: BaseAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998541393753419421, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998541393753419421, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998541393753419421, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.07267421
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998541393753419421, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998541393753419421, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998541393753419421, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998541393753419421, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998541393753419421, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998541393753419421, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998541393753419421, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829999922165439117, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
+      propertyPath: m_Size.x
+      value: 0.31819767
+      objectReference: {fileID: 0}
+    - target: {fileID: 7829999922165439117, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.049059093
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
+--- !u!1 &4384752199526706070 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2880138594445665509, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
+  m_PrefabInstance: {fileID: 1954995643985776499}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6809417090806014446 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4998541393753419421, guid: 75c5d2b90831a6e428b8119eb90cda65, type: 3}
+  m_PrefabInstance: {fileID: 1954995643985776499}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> knock-back-de-con
