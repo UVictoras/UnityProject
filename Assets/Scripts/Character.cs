@@ -3,6 +3,7 @@ using Unity;
 using TMPro;
 using System.Collections.Generic;
 using UnityEngine.TextCore.Text;
+using System.Collections;
 
 public class Character : MonoBehaviour
 {
@@ -39,6 +40,8 @@ public class Character : MonoBehaviour
     public Transform _shootingPoint;
     public Animator _animator;
 
+
+    private bool _timerRunning = false;
     #endregion Field
 
     /* ----------------------------------------------------- *\
@@ -147,6 +150,29 @@ public class Character : MonoBehaviour
             }
             
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.tag == "ZeusWrath" && this == ZeusWrath.instance._enemy)
+        {
+            if (_timerRunning == false)
+            {
+                _percentage += 10;
+                StartCoroutine(Timer());
+            }
+                
+        }
+
+    }
+
+    public IEnumerator Timer()
+    {
+        _timerRunning = true;
+        yield return new WaitForSeconds(1);
+        _timerRunning = false;
+
+
     }
     private void OnBecameInvisible()
     {
